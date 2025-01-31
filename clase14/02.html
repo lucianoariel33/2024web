@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenar y filtrar las tarjetas</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        p.description {
+            color: #34495e;
+            font-size: 1em;
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        /* Controles de filtro y orden */
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        select, button {
+            padding: 8px 12px;
+            font-size: 0.9em;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /* Estilos de las tarjetas */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #dcdde1;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            padding: 20px;
+            text-align: center;
+        }
+        .card h3 {
+            color: #2980b9;
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: #7f8c8d;
+            margin: 5px 0;
+        }
+        .price {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ordenar y filtrar las tarjetas</h1>
+    <p class="description">Enseñar a los estudiantes a ordenar las tarjetas por propiedades de los datos JSON (por ejemplo, ordenar productos por precio o fecha) y a implementar filtros (por ejemplo, filtrar artículos por categoría). Esto se puede hacer creando un menú con opciones de filtrado o de orden.</p>
+
+    <!-- Controles de filtro y orden -->
+    <div class="controls">
+        <label for="categoryFilter">Filtrar por categoría:</label>
+        <select id="categoryFilter">
+            <option value="all">Todas</option>
+            <option value="electronics">Electrónica</option>
+            <option value="furniture">Muebles</option>
+            <option value="clothing">Ropa</option>
+        </select>
+
+        <label for="sortOrder">Ordenar por precio:</label>
+        <select id="sortOrder">
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
+        </select>
+
+        <button onclick="applyFilters()">Aplicar</button>
+    </div>
+
+    <!-- Contenedor de tarjetas -->
+    <div id="card-container" class="card-container"></div>
+
+    <script>
+        // Simulación de datos JSON
+        const jsonData = [
+            { "titulo": "Televisor", "descripcion": "Televisor HD 40 pulgadas", "categoria": "electronics", "precio": 300 },
+            { "titulo": "Sofá", "descripcion": "Sofá de tres plazas", "categoria": "furniture", "precio": 500 },
+            { "titulo": "Camiseta", "descripcion": "Camiseta de algodón", "categoria": "clothing", "precio": 20 },
+            { "titulo": "Laptop", "descripcion": "Laptop con 8GB de RAM", "categoria": "electronics", "precio": 700 },
+            { "titulo": "Mesa", "descripcion": "Mesa de comedor", "categoria": "furniture", "precio": 150 },
+            { "titulo": "Pantalones", "descripcion": "Pantalones de mezclilla", "categoria": "clothing", "precio": 40 }
+        ];
+
+        // Función para renderizar las tarjetas
+        function renderCards(data) {
+            const container = document.getElementById('card-container');
+            container.innerHTML = ""; // Limpiar el contenedor
+
+            data.forEach(item => {
+                // Crear elementos de la tarjeta
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                const title = document.createElement('h3');
+                title.textContent = item.titulo;
+                card.appendChild(title);
+
+                const description = document.createElement('p');
+                description.textContent = item.descripcion;
+                card.appendChild(description);
+
+                const category = document.createElement('p');
+                category.textContent = `Categoría: ${item.categoria}`;
+                card.appendChild(category);
+
+                const price = document.createElement('p');
+                price.classList.add('price');
+                price.textContent = `$${item.precio}`;
+                card.appendChild(price);
+
+                // Agregar la tarjeta al contenedor
+                container.appendChild(card);
+            });
+        }
+
+        // Función para aplicar filtros y ordenar los datos
+        function applyFilters() {
+            const category = document.getElementById('categoryFilter').value;
+            const sortOrder = document.getElementById('sortOrder').value;
+
+            // Filtrar datos
+            let filteredData = jsonData.filter(item => {
+                return category === 'all' || item.categoria === category;
+            });
+
+            // Ordenar datos
+            filteredData.sort((a, b) => {
+                return sortOrder === 'asc' ? a.precio - b.precio : b.precio - a.precio;
+            });
+
+            // Renderizar tarjetas con los datos filtrados y ordenados
+            renderCards(filteredData);
+        }
+
+        // Inicializar renderizado de tarjetas
+        renderCards(jsonData);
+    </script>
+
+</body>
+</html>

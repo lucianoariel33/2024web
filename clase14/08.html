@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda en Tiempo Real en Tarjetas</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p.description {
+            color: #34495e;
+            font-size: 1em;
+            max-width: 700px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        /* Estilos del cuadro de búsqueda */
+        input[type="text"] {
+            padding: 10px;
+            width: 250px;
+            border: 2px solid #2980b9;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 1em;
+        }
+        /* Contenedor de tarjetas */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        /* Estilos de las tarjetas */
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .card h3 {
+            color: #2980b9;
+            margin: 15px 0 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Búsqueda en Tiempo Real en Tarjetas</h1>
+    <p class="description">Filtra los productos a medida que escribes en el cuadro de búsqueda.</p>
+
+    <!-- Cuadro de búsqueda -->
+    <input type="text" id="searchInput" placeholder="Buscar productos...">
+
+    <!-- Contenedor de tarjetas -->
+    <div id="card-container" class="card-container"></div>
+
+    <script>
+        // Simulación de datos JSON
+        const jsonData = [
+            { "titulo": "Lavarropas", "imagen": "https://dummyimage.com/200x300/000/fff&text=Lavarropas" },
+            { "titulo": "Microondas", "imagen": "https://dummyimage.com/200x300/000/fff&text=Microondas" },
+            { "titulo": "Notebook", "imagen": "https://dummyimage.com/200x300/000/fff&text=Notebook" },
+            { "titulo": "Televisor", "imagen": "https://dummyimage.com/200x300/000/fff&text=Televisor" },
+            { "titulo": "Microprocesador i9", "imagen": "https://dummyimage.com/200x300/000/fff&text=Microprocesador" },
+            { "titulo": "Netbook", "imagen": "https://dummyimage.com/200x300/000/fff&text=Netbook" },
+            { "titulo": "Lavavajillas", "imagen": "https://dummyimage.com/200x300/000/fff&text=Lavavajillas" },
+            { "titulo": "Termotanque", "imagen": "https://dummyimage.com/200x300/000/fff&text=Termotanque" },
+            { "titulo": "Lavadora", "imagen": "https://dummyimage.com/200x300/000/fff&text=Diverso+I" },
+            { "titulo": "Telefono Celular", "imagen": "https://dummyimage.com/200x300/000/fff&text=Telefono+Celular" }
+        ];
+
+        // Función para renderizar las tarjetas
+        function renderCards(data) {
+            const container = document.getElementById('card-container');
+            container.innerHTML = ""; // Limpiar el contenedor
+
+            data.forEach(item => {
+                // Crear elementos de la tarjeta
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                const img = document.createElement('img');
+                img.src = item.imagen;
+                img.alt = item.titulo;
+                card.appendChild(img);
+
+                const title = document.createElement('h3');
+                title.textContent = item.titulo;
+                card.appendChild(title);
+
+                // Agregar la tarjeta al contenedor
+                container.appendChild(card);
+            });
+        }
+
+        // Función para filtrar tarjetas
+        function filterCards() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const filteredData = jsonData.filter(item => item.titulo.toLowerCase().includes(searchInput));
+            renderCards(filteredData);
+        }
+
+        // Evento para la búsqueda
+        document.getElementById('searchInput').addEventListener('input', filterCards);
+
+        // Llamada inicial para renderizar todas las tarjetas
+        renderCards(jsonData);
+    </script>
+
+</body>
+</html>

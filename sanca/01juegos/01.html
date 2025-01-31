@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piedra, Papel o Tijera</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    button { padding: 10px 20px; font-size: 18px; margin: 10px; }
+    .result { font-size: 24px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Piedra, Papel o Tijera</h1>
+  <button onclick="play('piedra')">Piedra</button>
+  <button onclick="play('papel')">Papel</button>
+  <button onclick="play('tijera')">Tijera</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    function play(playerChoice) {
+      const choices = ['piedra', 'papel', 'tijera'];
+      const computerChoice = choices[Math.floor(Math.random() * 3)];
+      let result = '';
+
+      if (playerChoice === computerChoice) {
+        result = 'Empate!';
+      } else if (
+        (playerChoice === 'piedra' && computerChoice === 'tijera') ||
+        (playerChoice === 'papel' && computerChoice === 'piedra') ||
+        (playerChoice === 'tijera' && computerChoice === 'papel')
+      ) {
+        result = '¡Ganaste!';
+      } else {
+        result = 'Perdiste!';
+      }
+
+      document.getElementById('result').textContent = `Elegiste ${playerChoice}, la computadora eligió ${computerChoice}. ${result}`;
+    }
+  </script>
+</body>
+</html>

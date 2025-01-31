@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de la Vida - 10x10</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .column {
+            flex: 1;
+            padding: 20px;
+        }
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #e0e0e0;
+        }
+        .right-column {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f8f8;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            line-height: 1.6;
+            color: #555;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(10, 30px);
+            grid-template-rows: repeat(10, 30px);
+        }
+        .cell {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #999;
+            box-sizing: border-box;
+        }
+        .cell.alive {
+            background-color: #333;
+        }
+        .button-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #444;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .button:hover {
+            background-color: #666;
+        }
+
+        .centrar{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="column left-column">
+        <h1>Juego de la Vida</h1>
+        <p><strong>Reglas:</strong> El "Juego de la Vida" es un autómata celular creado por el matemático británico John Horton Conway en 1970. Se juega en una cuadrícula donde las celdas pueden estar vivas o muertas, y cambian su estado en cada turno según las siguientes reglas:</p>
+        <ul>
+            <li>Una celda viva con menos de dos vecinos vivos muere (por soledad).</li>
+            <li>Una celda viva con dos o tres vecinos vivos sigue viva.</li>
+            <li>Una celda viva con más de tres vecinos vivos muere (por sobrepoblación).</li>
+            <li>Una celda muerta con exactamente tres vecinos vivos revive (por reproducción).</li>
+        </ul>
+        <p><strong>Conceptos clave:</strong></p>
+        <ul>
+            <li>Estado de una celda: viva o muerta.</li>
+            <li>Vecindad: celdas adyacentes a una celda dada.</li>
+            <li>Ciclo: un turno en el que se actualizan todas las celdas según las reglas.</li>
+        </ul>
+        <p><strong>Historia:</strong> El Juego de la Vida fue inventado como una forma de simular el comportamiento de sistemas biológicos con reglas simples, mostrando cómo patrones complejos pueden emerger de interacciones locales simples.</p>
+        <p><strong>Lenguajes de programación:</strong> El juego se ha implementado en varios lenguajes, como JavaScript, Python, C++, Java, entre otros.</p>
+        <p><strong>Conceptos básicos de programación utilizados:</strong></p>
+        <ul>
+            <li>Arrays para representar la cuadrícula.</li>
+            <li>Bucles para actualizar el estado de las celdas en cada ciclo.</li>
+            <li>Condicionales para aplicar las reglas del juego.</li>
+            <li>Manipulación del DOM (en JavaScript) para visualizar la cuadrícula y los cambios.</li>
+        </ul>
+    </div>
+    <div class="column right-column">
+        <div class="centrar">
+            <div id="grid" class="grid-container"></div>
+            <div class="button-container">
+                <button class="button" onclick="startGame()">Iniciar Juego</button>
+                <button class="button" onclick="stopGame()">Detener Juego</button>
+                <button class="button" onclick="clearGrid()">Limpiar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const gridSize = 10;
+        let intervalId = null;
+
+        function createGrid() {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = '';
+            for (let i = 0; i < gridSize * gridSize; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.addEventListener('click', () => {
+                    cell.classList.toggle('alive');
+                });
+                grid.appendChild(cell);
+            }
+        }
+
+        function getGridState() {
+            const cells = document.querySelectorAll('.cell');
+            return Array.from(cells).map(cell => cell.classList.contains('alive'));
+        }
+
+        function setGridState(state) {
+            const cells = document.querySelectorAll('.cell');
+            state.forEach((alive, index) => {
+                if (alive) cells[index].classList.add('alive');
+                else cells[index].classList.remove('alive');
+            });
+        }
+
+        function updateGrid() {
+            const state = getGridState();
+            const newState = Array(gridSize * gridSize).fill(false);
+            for (let i = 0; i < gridSize * gridSize; i++) {
+                const neighbors = getNeighbors(i);
+                const aliveNeighbors = neighbors.filter(n => state[n]).length;
+                const isAlive = state[i];
+                newState[i] = isAlive ? (aliveNeighbors === 2 || aliveNeighbors === 3) : (aliveNeighbors === 3);
+            }
+            setGridState(newState);
+        }
+
+        function getNeighbors(index) {
+            const neighbors = [];
+            const row = Math.floor(index / gridSize);
+            const col = index % gridSize;
+            for (let r = row - 1; r <= row + 1; r++) {
+                for (let c = col - 1; c <= col + 1; c++) {
+                    if (r >= 0 && r < gridSize && c >= 0 && c < gridSize && (r !== row || c !== col)) {
+                        neighbors.push(r * gridSize + c);
+                    }
+                }
+            }
+            return neighbors;
+        }
+
+        function startGame() {
+            if (intervalId === null) {
+                intervalId = setInterval(updateGrid, 500);
+            }
+        }
+
+        function stopGame() {
+            if (intervalId !== null) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        }
+
+        function clearGrid() {
+            const cells = document.querySelectorAll('.cell');
+            cells.forEach(cell => cell.classList.remove('alive'));
+            stopGame();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createGrid();
+        });
+    </script>
+</body>
+</html>

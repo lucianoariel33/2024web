@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de la Vida - Retro</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #001400;
+            color: #00FF00;
+        }
+        .container {
+        display: flex;
+        flex-direction: column;
+            text-align: center;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(20, 20px);
+            grid-template-rows: repeat(20, 20px);
+            margin: 20px auto;
+        }
+        .cell {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #00FF00;
+            box-sizing: border-box;
+        }
+        .cell.alive {
+            background-color: #00FF00;
+        }
+        .button-container {
+            margin: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #004400;
+            color: #00FF00;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .button:hover {
+            background-color: #006600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Juego de la Vida</h1>
+        <div id="grid" class="grid-container"></div>
+        <div class="button-container">
+            <button class="button" onclick="startGame()">Iniciar Juego</button>
+            <button class="button" onclick="stopGame()">Detener Juego</button>
+            <button class="button" onclick="clearGrid()">Borrar Todo</button>
+        </div>
+    </div>
+
+    <script>
+        const gridSize = 20;
+        let intervalId = null;
+        
+        function createGrid() {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = '';
+            for (let i = 0; i < gridSize * gridSize; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.addEventListener('click', () => cell.classList.toggle('alive'));
+                grid.appendChild(cell);
+            }
+        }
+        
+        function getGridState() {
+            const cells = document.querySelectorAll('.cell');
+            return Array.from(cells).map(cell => cell.classList.contains('alive'));
+        }
+        
+        function setGridState(state) {
+            const cells = document.querySelectorAll('.cell');
+            state.forEach((alive, index) => {
+                if (alive) cells[index].classList.add('alive');
+                else cells[index].classList.remove('alive');
+            });
+        }
+        
+        function updateGrid() {
+            const state = getGridState();
+            const newState = Array(gridSize * gridSize).fill(false);
+            for (let i = 0; i < gridSize * gridSize; i++) {
+                const neighbors = getNeighbors(i);
+                const aliveNeighbors = neighbors.filter(n => state[n]).length;
+                const isAlive = state[i];
+                newState[i] = isAlive ? (aliveNeighbors === 2 || aliveNeighbors === 3) : (aliveNeighbors === 3);
+            }
+            setGridState(newState);
+        }
+        
+        function getNeighbors(index) {
+            const neighbors = [];
+            const row = Math.floor(index / gridSize);
+            const col = index % gridSize;
+            for (let r = row - 1; r <= row + 1; r++) {
+                for (let c = col - 1; c <= col + 1; c++) {
+                    if (r >= 0 && r < gridSize && c >= 0 && c < gridSize && (r !== row || c !== col)) {
+                        neighbors.push(r * gridSize + c);
+                    }
+                }
+            }
+            return neighbors;
+        }
+        
+        function startGame() {
+            if (intervalId === null) {
+                intervalId = setInterval(updateGrid, 500);
+            }
+        }
+        
+        function stopGame() {
+            if (intervalId !== null) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        }
+        
+        function clearGrid() {
+            const cells = document.querySelectorAll('.cell');
+            cells.forEach(cell => cell.classList.remove('alive'));
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            createGrid();
+        });
+    </script>
+</body>
+</html>

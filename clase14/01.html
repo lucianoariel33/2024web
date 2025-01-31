@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar botones de interacción en cada tarjeta</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f2f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        p.description {
+            color: #34495e;
+            font-size: 1em;
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        /* Estilos de las tarjetas */
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #dcdde1;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        .card h3 {
+            color: #2980b9;
+            margin-bottom: 10px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+        }
+        /* Estilos de los botones */
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-like { background-color: #e74c3c; color: #fff; }
+        .btn-like:hover { background-color: #c0392b; }
+        .btn-share { background-color: #3498db; color: #fff; }
+        .btn-share:hover { background-color: #2980b9; }
+        .btn-save { background-color: #2ecc71; color: #fff; }
+        .btn-save:hover { background-color: #27ae60; }
+        /* Estilo de mensajes */
+        .message {
+            color: #16a085;
+            margin-top: 10px;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Agregar botones de interacción en cada tarjeta</h1>
+    <p class="description">Incluir botones en las tarjetas que permitan realizar acciones como "Me gusta", "Compartir", o "Guardar". Los botones pueden cambiar de estilo o mostrar mensajes al hacer clic, usando JavaScript para modificar dinámicamente el DOM.</p>
+
+    <!-- Contenedor de tarjetas -->
+    <div id="card-container"></div>
+
+    <script>
+        // Simulación de datos JSON
+        const jsonData = [
+            { "titulo": "Producto 1", "descripcion": "Descripción del producto 1." },
+            { "titulo": "Producto 2", "descripcion": "Descripción del producto 2." },
+            { "titulo": "Producto 3", "descripcion": "Descripción del producto 3." }
+        ];
+
+        // Función para mostrar el mensaje en la tarjeta
+        function showMessage(button, text) {
+            const message = button.parentElement.nextElementSibling;
+            message.textContent = text;
+            message.style.display = 'block';
+            // Ocultar el mensaje después de 2 segundos
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 2000);
+        }
+
+        // Función para generar las tarjetas dinámicamente
+        function renderCards(data) {
+            const container = document.getElementById('card-container');
+            container.innerHTML = ""; // Limpiar el contenedor
+
+            data.forEach(item => {
+                // Crear elementos de la tarjeta
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                const title = document.createElement('h3');
+                title.textContent = item.titulo;
+                card.appendChild(title);
+
+                const description = document.createElement('p');
+                description.textContent = item.descripcion;
+                card.appendChild(description);
+
+                const buttonContainer = document.createElement('div');
+                buttonContainer.classList.add('button-container');
+
+                const likeButton = document.createElement('button');
+                likeButton.classList.add('btn', 'btn-like');
+                likeButton.textContent = 'Me gusta';
+                likeButton.onclick = () => showMessage(likeButton, '¡Te gustó!');
+                buttonContainer.appendChild(likeButton);
+
+                const shareButton = document.createElement('button');
+                shareButton.classList.add('btn', 'btn-share');
+                shareButton.textContent = 'Compartir';
+                shareButton.onclick = () => showMessage(shareButton, '¡Compartido!');
+                buttonContainer.appendChild(shareButton);
+
+                const saveButton = document.createElement('button');
+                saveButton.classList.add('btn', 'btn-save');
+                saveButton.textContent = 'Guardar';
+                saveButton.onclick = () => showMessage(saveButton, '¡Guardado!');
+                buttonContainer.appendChild(saveButton);
+
+                card.appendChild(buttonContainer);
+
+                const message = document.createElement('p');
+                message.classList.add('message');
+                message.style.display = 'none';
+                card.appendChild(message);
+
+                // Agregar la tarjeta al contenedor
+                container.appendChild(card);
+            });
+        }
+
+        // Llamada a la función para renderizar las tarjetas
+        renderCards(jsonData);
+    </script>
+
+</body>
+</html>

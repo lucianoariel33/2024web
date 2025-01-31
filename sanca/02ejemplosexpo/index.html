@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplos de HTML y CSS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Ejemplos de Códigos HTML y CSS</h1>
+    <p>Haz clic en los botones para copiar el código y pruébalo en Visual Studio Code.</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Formulario de Contacto -->
+    <section class="example">
+      <h2>1. Formulario de Contacto</h2>
+      <button onclick="copyCode('formulario-html')">Copiar HTML</button>
+      <button onclick="copyCode('formulario-css')">Copiar CSS</button>
+
+      <!-- Código HTML -->
+      <h3>HTML</h3>
+      <pre id="formulario-html">
+        <code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Formulario de Contacto&lt;/title&gt;
+    &lt;link rel="stylesheet" href="formulario.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;section class="form-container"&gt;
+      &lt;h2&gt;Formulario de Contacto&lt;/h2&gt;
+      &lt;form action="#" method="POST"&gt;
+        &lt;label for="name"&gt;Nombre:&lt;/label&gt;
+        &lt;input type="text" id="name" name="name" required&gt;
+
+        &lt;label for="email"&gt;Correo Electrónico:&lt;/label&gt;
+        &lt;input type="email" id="email" name="email" required&gt;
+
+        &lt;label for="message"&gt;Mensaje:&lt;/label&gt;
+        &lt;textarea id="message" name="message" rows="4" required&gt;&lt;/textarea&gt;
+
+        &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/section&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+        </code>
+      </pre>
+
+      <!-- Código CSS -->
+      <h3>CSS</h3>
+      <pre id="formulario-css">
+        <code>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.form-container {
+  background-color: #ffffff;
+  padding: 30px;
+  margin: 50px auto;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form label {
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  display: block;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+form button {
+  background-color: #5a6e6f;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+
+form button:hover {
+  background-color: #4ea79c;
+}
+        </code>
+      </pre>
+    </section>
+
+    <!-- Tarjeta de Producto -->
+    <section class="example">
+      <h2>2. Tarjeta de Producto</h2>
+      <button onclick="copyCode('tarjeta-producto-html')">Copiar HTML</button>
+      <button onclick="copyCode('tarjeta-producto-css')">Copiar CSS</button>
+
+      <!-- Código HTML -->
+      <h3>HTML</h3>
+      <pre id="tarjeta-producto-html">
+        <code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Tarjeta de Producto&lt;/title&gt;
+    &lt;link rel="stylesheet" href="tarjeta_producto.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;section class="product-card"&gt;
+      &lt;img src="https://w7.pngwing.com/pngs/237/323/png-transparent-capybara-rodent-guinea-pig-beaver-animal-zoo-background-mammal-animals-fauna-thumbnail.png" alt="animal salvaje de Nordelta"&gt;
+      &lt;h3&gt;Nombre del Producto&lt;/h3&gt;
+      &lt;p&gt;Descripción corta del producto.&lt;/p&gt;
+      &lt;p&gt;Precio: $199.99&lt;/p&gt;
+      &lt;button&gt;Comprar&lt;/button&gt;
+    &lt;/section&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+        </code>
+      </pre>
+
+      <!-- Código CSS -->
+      <h3>CSS</h3>
+      <pre id="tarjeta-producto-css">
+        <code>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.product-card {
+  background-color: #fff;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 50px auto;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  font-size: 1.6em;
+  margin-top: 20px;
+}
+
+.product-card p {
+  color: #555;
+  margin: 10px 0;
+}
+
+.product-card button {
+  background-color: #61c0bf;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.product-card button:hover {
+  background-color: #4ea79c;
+}
+        </code>
+      </pre>
+    </section>
+
+    <!-- Lista de Elementos -->
+    <section class="example">
+      <h2>3. Lista de Elementos</h2>
+      <button onclick="copyCode('lista-elementos-html')">Copiar HTML</button>
+      <button onclick="copyCode('lista-elementos-css')">Copiar CSS</button>
+
+      <!-- Código HTML -->
+      <h3>HTML</h3>
+      <pre id="lista-elementos-html">
+        <code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Lista de Elementos&lt;/title&gt;
+    &lt;link rel="stylesheet" href="lista_elementos.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;section class="list-container"&gt;
+      &lt;h2&gt;Lista de Elementos&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Elemento 1&lt;/li&gt;
+        &lt;li&gt;Elemento 2&lt;/li&gt;
+        &lt;li&gt;Elemento 3&lt;/li&gt;
+        &lt;li&gt;Elemento 4&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+        </code>
+      </pre>
+
+      <!-- Código CSS -->
+      <h3>CSS</h3>
+      <pre id="lista-elementos-css">
+        <code>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.list-container {
+  background-color: #ffffff;
+  padding: 30px;
+  margin: 50px auto;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h2 {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+        </code>
+      </pre>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Ejemplos de HTML y CSS</p>
+  </footer>
+
+  <script>
+    function copyCode(id) {
+      const codeBlock = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(codeBlock).then(() => {
+        alert('Código copiado al portapapeles!');
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conceptos de JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .comment {
+            color: #007700;
+            font-style: italic;
+        }
+        .code {
+            color: #0000ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <h2>¿Qué es una variable?</h2>
+            <pre><span class="comment">// Una variable es un contenedor para almacenar datos.</span></pre>
+            <pre><span class="code">let nombre = "Juan";</span></pre>
+        </div>
+
+        <div class="section">
+            <h2>¿Cómo se declara una variable?</h2>
+            <pre><span class="comment">// Se declara una variable con let, var, o const.</span></pre>
+            <pre><span class="code">let edad = 25;</span></pre>
+        </div>
+
+        <div class="section">
+            <h2>var, let, const</h2>
+            <pre><span class="comment">// var: Alcance global o de función, puede ser redeclarada.</span></pre>
+            <pre><span class="code">var ciudad = "Madrid";</span></pre>
+            <pre><span class="comment">// let: Alcance de bloque, no puede ser redeclarada en el mismo bloque.</span></pre>
+            <pre><span class="code">let pais = "España";</span></pre>
+            <pre><span class="comment">// const: Alcance de bloque, valor constante.</span></pre>
+            <pre><span class="code">const fecha = "2024";</span></pre>
+        </div>
+
+        <div class="section">
+            <h2>Variable numérica y cadena de texto</h2>
+            <pre><span class="comment">// Variable numérica</span></pre>
+            <pre><span class="code">let edad = 30;</span></pre>
+            <pre><span class="comment">// Variable cadena de texto</span></pre>
+            <pre><span class="code">let nombre = "Ana";</span></pre>
+        </div>
+
+        <div class="section">
+            <h2>Operadores</h2>
+            <h3>Operadores aritméticos</h3>
+            <pre><span class="comment">// Sumar, restar, multiplicar, dividir</span></pre>
+            <pre><span class="code">let suma = 5 + 3;</span></pre>
+            <pre><span class="code">let resta = 5 - 3;</span></pre>
+            <pre><span class="code">let multiplicacion = 5 * 3;</span></pre>
+            <pre><span class="code">let division = 5 / 3;</span></pre>
+
+            <h3>Operadores de comparación</h3>
+            <pre><span class="comment">// Comparar valores</span></pre>
+            <pre><span class="code">let esIgual = (5 === 5);</span></pre>
+            <pre><span class="code">let esMayor = (5 &gt; 3);</span></pre>
+
+            <h3>Operadores lógicos</h3>
+            <pre><span class="comment">// AND, OR, NOT</span></pre>
+            <pre><span class="code">let y = (true &amp;&amp; false);</span></pre>
+            <pre><span class="code">let o = (true || false);</span></pre>
+            <pre><span class="code">let not = !true;</span></pre>
+        </div>
+
+        <div class="section">
+            <h2>Estructuras de control</h2>
+            <h3>Bucles</h3>
+            <pre><span class="comment">// Bucle for</span></pre>
+            <pre><span class="code">for (let i = 0; i &lt; 5; i++) {</span></pre>
+            <pre><span class="code">    console.log(i);</span></pre>
+            <pre><span class="code">}</span></pre>
+
+            <pre><span class="comment">// Bucle while</span></pre>
+            <pre><span class="code">let i = 0;</span></pre>
+            <pre><span class="code">while (i &lt; 5) {</span></pre>
+            <pre><span class="code">    console.log(i);</span></pre>
+            <pre><span class="code">    i++;</span></pre>
+            <pre><span class="code">}</span></pre>
+
+            <pre><span class="comment">// Bucle do while</span></pre>
+            <pre><span class="code">let j = 0;</span></pre>
+            <pre><span class="code">do {</span></pre>
+            <pre><span class="code">    console.log(j);</span></pre>
+            <pre><span class="code">    j++;</span></pre>
+            <pre><span class="code">} while (j &lt; 5);</span></pre>
+        </div>
+
+        <div class="section">
+            <h2>Condicionales</h2>
+            <h3>if</h3>
+            <pre><span class="comment">// Condición simple</span></pre>
+            <pre><span class="code">if (edad &gt; 18) {</span></pre>
+            <pre><span class="code">    console.log("Adulto");</span></pre>
+            <pre><span class="code">}</span></pre>
+
+            <h3>switch</h3>
+            <pre><span class="comment">// Evaluar múltiples casos</span></pre>
+            <pre><span class="code">let dia = 2;</span></pre>
+            <pre><span class="code">switch (dia) {</span></pre>
+            <pre><span class="code">    case 1:</span></pre>
+            <pre><span class="code">        console.log("Lunes");</span></pre>
+            <pre><span class="code">        break;</span></pre>
+            <pre><span class="code">    case 2:</span></pre>
+            <pre><span class="code">        console.log("Martes");</span></pre>
+            <pre><span class="code">        break;</span></pre>
+            <pre><span class="code">    default:</span></pre>
+            <pre><span class="code">        console.log("Otro día");</span></pre>
+            <pre><span class="code">}</span></pre>
+        </div>
+
+        <div class="section">
+            <h2>¿Qué es un array?</h2>
+            <pre><span class="comment">// Un array es una lista de elementos</span></pre>
+            <pre><span class="code">let frutas = ["manzana", "naranja", "plátano"];</span></pre>
+        </div>
+
+        <div class="section">
+            <h2>¿Qué es un booleano?</h2>
+            <pre><span class="comment">// Un booleano representa verdadero o falso</span></pre>
+            <pre><span class="code">let esVerano = true;</span></pre>
+        </div>
+
+        <div class="section">
+            <h2>Funciones</h2>
+            <h3>¿Qué es una función?</h3>
+            <pre><span class="comment">// Una función es un bloque de código reutilizable</span></pre>
+            <pre><span class="code">function saludar() {</span></pre>
+            <pre><span class="code">    console.log("Hola");</span></pre>
+            <pre><span class="code">}</span></pre>
+
+            <h3>¿Cómo se declara una función?</h3>
+            <pre><span class="comment">// Declaración de una función con parámetros</span></pre>
+            <pre><span class="code">function sumar(a, b) {</span></pre>
+            <pre><span class="code">    return a + b;</span></pre>
+            <pre><span class="code">}</span></pre>
+
+            <h3>Parámetros y argumentos</h3>
+            <pre><span class="comment">// Llamada a la función</span></pre>
+            <pre><span class="code">let resultado = sumar(5, 3); // resultado es 8</span></pre>
+        </div>
+
+        <div class="section">
+            <h2>Objetos</h2>
+            <h3>¿Qué es un objeto?</h3>
+            <pre><span class="comment">// Un objeto es una colección de propiedades</span></pre>
+            <pre><span class="code">let persona = {</span></pre>
+            <pre><span class="code">    nombre: "Ana",</span></pre>
+            <pre><span class="code">    edad: 30,</span></pre>
+            <pre><span class="code">    saludar: function() {</span></pre>
+            <pre><span class="code">        console.log("Hola, soy " + this.nombre);</span></pre>
+            <pre><span class="code">    }</span></pre>
+            <pre><span class="code">};</span></pre>
+        </div>
+
+        <div class="section">
+            <h2>Arrays de objetos</h2>
+            <pre><span class="comment">// Un array de objetos es una lista de objetos</span></pre>
+            <pre><span class="code">let personas = [</span></pre>
+            <pre><span class="code">    { nombre: "Ana", edad: 30 },</span></pre>
+            <pre><span class="code">    { nombre: "Luis", edad: 25 }</span></pre>
+            <pre><span class="code">];</span></pre>
+        </div>
+    </div>
+</body>
+</html>

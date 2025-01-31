@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incorporar efectos de animación o estilo en las tarjetas</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ecf0f1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p.description {
+            color: #34495e;
+            font-size: 1em;
+            max-width: 700px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        /* Contenedor de tarjetas */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        /* Estilos de las tarjetas */
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+            transition: opacity 0.3s;
+        }
+        .card:hover img {
+            opacity: 0.8;
+        }
+        .card h3 {
+            color: #2980b9;
+            margin: 15px 0 10px 0;
+            transition: color 0.3s;
+        }
+        .card:hover h3 {
+            color: #1abc9c;
+        }
+        .card p {
+            color: #7f8c8d;
+            font-size: 0.95em;
+            margin: 10px 0;
+            transition: color 0.3s;
+        }
+        .card:hover p {
+            color: #2c3e50;
+        }
+        /* Botones con animación */
+        .btn {
+            padding: 10px 20px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .btn:hover {
+            background-color: #1abc9c;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Incorporar efectos de animación o estilo en las tarjetas</h1>
+    <p class="description">Agregar estilos especiales a las tarjetas, como efectos de hover, sombras, o transiciones CSS, para que los estudiantes vean cómo los datos pueden tener una presentación visual más atractiva.</p>
+
+    <!-- Contenedor de tarjetas -->
+    <div id="card-container" class="card-container"></div>
+
+    <script>
+        // Simulación de datos JSON
+        const jsonData = [
+            {
+                "titulo": "Smartphone",
+                "descripcion": "Último modelo con tecnología avanzada.",
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=Smartphone"
+            },
+            {
+                "titulo": "Auriculares",
+                "descripcion": "Sonido de alta calidad y comodidad.",
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=Auriculares"
+            },
+            {
+                "titulo": "Reloj Inteligente",
+                "descripcion": "Mantente conectado y monitorea tu salud.",
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=Reloj+Inteligente"
+            },
+            {
+                "titulo": "Laptop",
+                "descripcion": "Potencia y rendimiento para todas tus tareas.",
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=Laptop"
+            },
+            {
+                "titulo": "Cámara Digital",
+                "descripcion": "Captura momentos con alta resolución.",
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=Cámara+Digital"
+            }
+        ];
+
+        // Función para renderizar las tarjetas
+        function renderCards(data) {
+            const container = document.getElementById('card-container');
+            container.innerHTML = ""; // Limpiar el contenedor
+
+            data.forEach(item => {
+                // Crear elementos de la tarjeta
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                const img = document.createElement('img');
+                img.src = item.imagen;
+                img.alt = item.titulo;
+                card.appendChild(img);
+
+                const title = document.createElement('h3');
+                title.textContent = item.titulo;
+                card.appendChild(title);
+
+                const description = document.createElement('p');
+                description.textContent = item.descripcion;
+                card.appendChild(description);
+
+                const button = document.createElement('button');
+                button.classList.add('btn');
+                button.textContent = 'Ver más';
+                card.appendChild(button);
+
+                // Agregar la tarjeta al contenedor
+                container.appendChild(card);
+            });
+        }
+
+        // Llamada a la función para renderizar las tarjetas
+        renderCards(jsonData);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adivina el número</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 10px; font-size: 18px; margin: 10px; }
+    .message { font-size: 24px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Adivina el número</h1>
+  <p>Ingresa un número entre 1 y 100</p>
+  <input type="number" id="userGuess" min="1" max="100">
+  <button onclick="guessNumber()">Adivinar</button>
+  <div class="message" id="message"></div>
+
+  <script>
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+    function guessNumber() {
+      const userGuess = parseInt(document.getElementById('userGuess').value);
+      let message = '';
+
+      if (userGuess === randomNumber) {
+        message = '¡Felicidades, adivinaste el número!';
+      } else if (userGuess < randomNumber) {
+        message = 'El número es más grande. ¡Intenta de nuevo!';
+      } else {
+        message = 'El número es más pequeño. ¡Intenta de nuevo!';
+      }
+
+      document.getElementById('message').textContent = message;
+    }
+  </script>
+</body>
+</html>

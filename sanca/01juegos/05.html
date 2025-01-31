@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego Clic al Círculo</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    #start-restart {
+      position: relative;
+      top: 20px;
+      margin-bottom: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #game-area {
+      position: relative;
+      width: 90%;
+      max-width: 400px;
+      height: calc(100vh - 100px); /* Ocupa toda la pantalla menos espacio para el botón */
+      border: 2px solid #333;
+      background-color: #fff;
+      margin-top: 10px;
+    }
+    #circle {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    #score, #timer {
+      position: absolute;
+      top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    #score {
+      left: 10px;
+    }
+    #timer {
+      right: 10px;
+    }
+    #message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      color: green;
+      display: none;
+      text-align: center;
+    }
+    #play-again {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <button id="start-restart">Iniciar juego</button>
+  <div id="game-area">
+    <div id="circle"></div>
+    <div id="score">Puntaje: 0</div>
+    <div id="timer">Tiempo: 10s</div>
+    <div id="message"></div>
+    <button id="play-again">Volver a jugar</button>
+  </div>
+  <script>
+    const startRestartButton = document.getElementById('start-restart');
+    const gameArea = document.getElementById('game-area');
+    const circle = document.getElementById('circle');
+    const scoreDisplay = document.getElementById('score');
+    const timerDisplay = document.getElementById('timer');
+    const message = document.getElementById('message');
+    const playAgainButton = document.getElementById('play-again');
+
+    let score = 0;
+    let timeLeft = 10;
+    let gameInterval, timerInterval;
+
+    function moveCircle() {
+      const areaWidth = gameArea.offsetWidth - circle.offsetWidth;
+      const areaHeight = gameArea.offsetHeight - circle.offsetHeight;
+      const randomX = Math.random() * areaWidth;
+      const randomY = Math.random() * areaHeight;
+
+      circle.style.left = `${randomX}px`;
+      circle.style.top = `${randomY}px`;
+    }
+
+    circle.addEventListener('touchstart', () => {
+      if (timeLeft > 0) {
+        score++;
+        scoreDisplay.textContent = `Puntaje: ${score}`;
+        moveCircle();
+      }
+    });
+
+    function updateTimer() {
+      if (timeLeft > 0) {
+        timeLeft--;
+        timerDisplay.textContent = `Tiempo: ${timeLeft}s`;
+      } else {
+        clearInterval(timerInterval);
+        clearInterval(gameInterval);
+        endGame();
+      }
+    }
+
+    function endGame() {
+      circle.style.display = 'none';
+      playAgainButton.style.display = 'block';
+
+      const highScore = localStorage.getItem('highScore') || 0;
+      if (score > highScore) {
+        localStorage.setItem('highScore', score);
+        message.textContent = `¡Nuevo récord! Puntaje: ${score}`;
+      } else {
+        message.textContent = `No superaste el récord. Puntaje: ${score}\nRécord actual: ${highScore}`;
+      }
+
+      message.style.display = 'block';
+    }
+
+    function resetGame() {
+      clearInterval(timerInterval);
+      clearInterval(gameInterval);
+      score = 0;
+      timeLeft = 10;
+      scoreDisplay.textContent = `Puntaje: 0`;
+      timerDisplay.textContent = `Tiempo: 10s`;
+      message.style.display = 'none';
+      playAgainButton.style.display = 'none';
+      circle.style.display = 'block';
+      moveCircle();
+    }
+
+    function startGame() {
+      startRestartButton.textContent = 'Reiniciar';
+      moveCircle();
+      gameInterval = setInterval(moveCircle, 800);
+      timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    startRestartButton.addEventListener('click', () => {
+      resetGame();
+      startGame();
+    });
+
+    playAgainButton.addEventListener('click', () => {
+      resetGame();
+      startGame();
+    });
+  </script>
+</body>
+</html>

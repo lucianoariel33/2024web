@@ -1,0 +1,436 @@
+* {
+    scroll-behavior: smooth;
+}
+
+#volver {
+    position: fixed;
+    top: 85%;
+    right: 5%;
+    background-color: white;
+    border-radius: 50px;
+    height: 100px;
+    width: 100px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+#banner0 {
+    width: 100%;
+    height: 50px;
+    background-color: cadetblue;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-attachment: fixed;
+    font-family: "Raleway", sans-serif;
+}
+
+#banner0 a {
+    color: white;
+    text-decoration: none;
+}
+
+#banner0 a:hover {
+
+    color: rgb(250, 192, 223);
+}
+
+#banner {
+    width: 100%;
+    height: 100vh;
+    background-image: url(pexels-suissounet-2101187.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-attachment: fixed;
+}
+
+#texto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cadetblue;
+    width: 20%;
+    height: 150px;
+    padding: 90px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#texto h1 {
+
+    color: white;
+    font-family: "Lobster Two", sans-serif;
+    margin: 0%;
+}
+
+#banner2 {
+    width: 100%;
+    height: 100%;
+    background-image: url(arbol-naturaleza-paisajes-prado-wallpaper-5980886dc13a2d8bc6d7088f1091369d.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#texto2 {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    backdrop-filter: blur(10px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20%;
+}
+
+#texto2 h3 {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+#texto2 h1 {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+#texto2 p {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#banner3 {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contenedor {
+    width: 70%;
+    height: 70vh;
+    background-color: blanchedalmond;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#izquierda {
+    height: 90%;
+    width: 75%;
+    background-color: mediumvioletred;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    font-family: "Cormorant Infant", serif;
+}
+
+#izquierda li {
+    color: white;
+    font-size: 18px;
+    list-style: none;
+}
+
+#derecha {
+    height: 90%;
+    width: 25%;
+    background-color: cornflowerblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+}
+
+#banner4 {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: mistyrose;
+}
+
+#contenedor2 {
+    width: 70%;
+    height: 70vh;
+    background-color: lavenderblush;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#izquierda2 {
+    height: 100%;
+    width: 50%;
+    background-color: lightyellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+    font-family: "Lora", serif;
+}
+
+#derecha2 {
+    height: 100%;
+    width: 50%;
+    background-color: hotpink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    font-family: "Lora", serif;
+}
+
+.my-button {
+    padding: 10px 20px;
+    background-color: gainsboro;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.my-button:hover {
+    background-color: tomato;
+    color: midnightblue;
+
+}
+
+#banner5 {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#contenedor5 {
+    width: 70%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#izquierda5 {
+    height: 100%;
+    width: 75%;
+    background-color: honeydew;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+}
+
+#derecha5 {
+    height: 100%;
+    width: 40%;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    font-family: "Domine", serif;
+}
+
+#contenedor {
+    margin: auto;
+    width: 100%;
+    background-color: gainsboro;
+}
+
+.SUSCRIBITE {
+    height: 400px;
+    background-size: 100%;
+    background-color: snow;
+    width: 70%;
+    font-family: "League Spartan", sans-serif;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.titulo {
+    display: flex;
+    background-color: cadetblue;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    width: auto;
+    margin: auto;
+    padding: 20px;
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.contacto .formulario {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.contacto .formulario input[type="email"],
+.contacto .formulario input[type="TEXT"] {
+    border: 3px solid cadetblue;
+    border-radius: 5px;
+    padding: 15px 20px;
+    font-size: 20px;
+}
+
+.contacto .formulario input[type="text"],
+.contacto .formulario input[type="email"] {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 15px;
+    font-family: "Roboto", sans-serif;
+}
+
+.contacto .formulario .boton {
+    margin: auto;
+    background: cadetblue;
+    color: white;
+    margin-bottom: 50px;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 15px 70px;
+    border-radius: 5px;
+    font-size: 22px;
+}
+
+.contacto .formulario .boton:hover {
+    background: rgb(241, 217, 237);
+    font-size: 16px;
+    font-weight: bold;
+    color: #020202;
+    font-size: 22px;
+}
+
+
+#footer {
+    width: 100%;
+    height: 50px;
+    background-color: cadetblue;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-attachment: fixed;
+    font-family: "Raleway", sans-serif;
+}
+
+
+@media (max-width:500px) {
+
+
+    #banner0 {
+        flex-direction: column;
+        height: 300px;
+    }
+
+
+    #banner3 {
+        margin-top: 300px;
+    }
+
+    #contenedor {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #derecha {
+        width: 75%;
+    }
+
+    #izquierda {
+        width: 75%;
+    }
+
+    #banner4 {
+        height: auto;
+        margin-top: 200px;
+    }
+
+    #contenedor2 {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+    }
+
+    #izquierda2 {
+        width: 100%;
+    }
+
+    #derecha2 {
+        width: 100%;
+    }
+
+    #banner5 {
+        height: auto;
+    }
+
+    #contenedor5 {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+
+    }
+
+    #izquierda5 {
+        width: 100%;
+    }
+
+    #derecha5 {
+        width: 100%;
+    }
+
+    .SUSCRIBITE {
+        width: 100%;
+    }
+
+    .titulo {
+        border-radius: 0px;
+    }
+}

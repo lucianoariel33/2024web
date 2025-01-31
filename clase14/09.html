@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupos de Tarjetas por Categoría</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        /* Estilos de las secciones */
+        .section {
+            margin: 20px 0;
+            width: 100%;
+        }
+        .section-title {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        /* Contenedor de tarjetas */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        /* Estilos de las tarjetas */
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .card h3 {
+            color: #2980b9;
+            margin: 15px 0 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Grupos de Tarjetas por Categoría</h1>
+
+    <!-- Contenedor para las secciones de tarjetas -->
+    <div id="card-sections"></div>
+
+    <script>
+        // Simulación de datos JSON con categorías
+        const jsonData = [
+            { "titulo": "Electrónico A", "imagen": "https://dummyimage.com/200x300/000/fff&text=Electrónico+A", "categoria": "Electrónicos" },
+            { "titulo": "Electrónico B", "imagen": "https://dummyimage.com/200x300/000/fff&text=Electrónico+B", "categoria": "Electrónicos" },
+            { "titulo": "Ropa A", "imagen": "https://dummyimage.com/200x300/000/fff&text=Ropa+A", "categoria": "Ropa" },
+            { "titulo": "Ropa B", "imagen": "https://dummyimage.com/200x300/000/fff&text=Ropa+B", "categoria": "Ropa" },
+            { "titulo": "Mueble A", "imagen": "https://dummyimage.com/200x300/000/fff&text=Mueble+A", "categoria": "Muebles" },
+            { "titulo": "Mueble B", "imagen": "https://dummyimage.com/200x300/000/fff&text=Mueble+B", "categoria": "Muebles" },
+            { "titulo": "Juguete A", "imagen": "https://dummyimage.com/200x300/000/fff&text=Juguete+A", "categoria": "Juguetes" },
+            { "titulo": "Juguete B", "imagen": "https://dummyimage.com/200x300/000/fff&text=Juguete+B", "categoria": "Juguetes" },
+            { "titulo": "Electrónico C", "imagen": "https://dummyimage.com/200x300/000/fff&text=Electrónico+C", "categoria": "Electrónicos" },
+            { "titulo": "Ropa C", "imagen": "https://dummyimage.com/200x300/000/fff&text=Ropa+C", "categoria": "Ropa" },
+            { "titulo": "Juguete X", "imagen": "https://dummyimage.com/200x300/000/fff&text=Juguete+A", "categoria": "Juguetes" }
+        ];
+
+        // Función para agrupar y renderizar tarjetas
+        function renderGroupedCards(data) {
+            const sectionsContainer = document.getElementById('card-sections');
+            sectionsContainer.innerHTML = ""; // Limpiar el contenedor
+
+            // Agrupar datos por categoría
+            const groupedData = data.reduce((groups, item) => {
+                const category = item.categoria;
+                if (!groups[category]) {
+                    groups[category] = [];
+                }
+                groups[category].push(item);
+                return groups;
+            }, {});
+
+            // Crear secciones y tarjetas
+            for (const category in groupedData) {
+                const section = document.createElement('div');
+                section.classList.add('section');
+
+                const sectionTitle = document.createElement('h2');
+                sectionTitle.classList.add('section-title');
+                sectionTitle.textContent = category;
+
+                const cardContainer = document.createElement('div');
+                cardContainer.classList.add('card-container');
+
+                groupedData[category].forEach(item => {
+                    // Crear elementos de la tarjeta
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+
+                    const img = document.createElement('img');
+                    img.src = item.imagen;
+                    img.alt = item.titulo;
+                    card.appendChild(img);
+
+                    const title = document.createElement('h3');
+                    title.textContent = item.titulo;
+                    card.appendChild(title);
+
+                    // Agregar la tarjeta al contenedor
+                    cardContainer.appendChild(card);
+                });
+
+                section.appendChild(sectionTitle);
+                section.appendChild(cardContainer);
+                sectionsContainer.appendChild(section);
+            }
+        }
+
+        // Llamada inicial para renderizar todas las tarjetas agrupadas
+        renderGroupedCards(jsonData);
+    </script>
+
+</body>
+</html>

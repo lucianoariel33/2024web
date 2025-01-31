@@ -1,0 +1,665 @@
+body {
+  background-color: #e9c991;
+  
+}
+
+*{
+
+  scroll-behavior: smooth;
+}
+
+#contenedor {
+  margin: auto; /* Centra el contenido principal horizontalmente */
+  width: 100%; /* Establece el ancho del contenido principal */
+  height: 100vh; background-color: #92bcff;
+  
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/********************SUSCRIBITE****************/
+.SUSCRIBITE {
+  
+  width: 70%;
+  background-size: 100%;
+  background-color: #e9c991; /* Define el color de fondo del contenido principal */
+}
+.titulo {
+  display: flex; /* Convierte la fila3 en un contenedor flexible */
+  background-color: #F27405;
+  justify-content: center; /* Alinea el contenido  al centro horizontalmente */
+  align-items: center; /* Alinea el contenido al centro verticalmente */
+  height: 100px; /* Establece la altura */
+  width: auto; /* Establece el ancho del contenido principal */
+  margin: auto;
+  padding: 20px; /* Establece el espacio interno*/
+  font-size: 25px; /* Establece el tamaño de la fuente del botón */
+  color: white;
+  font-weight: bold;
+  display: flex; /* Convierte la fila3 en un contenedor flexible */
+}
+.contacto .formulario {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+  align-content: stretch
+}
+.contacto .formulario input[type="email"], .contacto .formulario input[type="TEXT"] {
+  border: 3px solid grey;
+  border-radius: 5px;
+  padding: 15px 20px;
+  font-size: 20px;
+}
+.contacto .formulario input[type="text"], .contacto .formulario input[type="email"] {
+  width: 100%;
+  margin: auto;
+  margin-bottom: 15px;
+}
+.contacto .formulario .boton {
+  margin: auto;
+  background: grey;
+  color: white;
+  margin-bottom: 50px;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  padding: 15px 70px;
+  border-radius: 5px;
+}
+.contacto .formulario .boton:hover {
+  background: #92bcff;
+  font-size: 16px;
+  font-weight: bold;
+  color: #020202;
+}
+/**************************/
+
+#banner0 {
+  width: 100%;
+  height: 100px;
+  background-color: #F27405;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 20px 20px;
+}
+
+marquee {
+  
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  font-size: 15px;
+}
+
+marquee p{
+  color: #F27405;
+  font-family: "Sniglet", system-ui;
+}
+
+#contenedor0 {
+  
+  width: 80%;
+  font-family: "Sniglet", system-ui;
+  color:#cee300;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+
+#contenedor0 img{
+  width: 40px;
+  height: 40px;
+}
+
+
+.filaslider {
+  background-color:#e9c991;
+  
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#banner {
+  width: 100%;
+  height: 100vh;
+  background-color: #F27405; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 20px 20px;
+}
+
+#texto h1 {
+  color: white;
+  font-family: "Cabin Condensed", sans-serif;
+  text-transform: uppercase;
+}
+
+#texto p {
+  color: white;
+  font-family: "Sniglet", system-ui;
+  text-transform: uppercase;
+}
+
+#texto {
+  width: 50%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+
+
+#banner2 {
+  width: 100%;
+  height: 100vh;
+  background: #F27405; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+#texto2 h1 {
+  color: white;
+  font-family: "Cabin Condensed", sans-serif;
+  text-transform: uppercase;
+}
+
+#texto2 p {
+  color: white;
+  font-family: "Sniglet", system-ui;
+}
+
+#texto2 {
+  width: 50%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#banner3 {
+  width: 100%;
+  height: 100vh;
+  background-color:white;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#contenedor1 {
+  background-color: rgba(240, 248, 255, 0);
+  border-radius: 40px;
+  width: 70%;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#izquierda {
+  background-color: #e9c991;
+  border-radius: 40px;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#izquierda h3{
+  font-family: "Cabin Condensed", sans-serif;
+  color: white;
+}
+
+#izquierda p{
+  color: whitesmoke;
+}
+
+#derecha {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 40px;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#derecha img {
+  border-radius: 40px;
+  width: 200px;
+  
+  margin: 0%;
+}
+
+#banner4 {
+  width: 100%;
+  height: 100vh;
+  background: #001122;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#contenedor2 {
+  background-color: rgba(240, 248, 255, 0);
+  border-radius: 40px;
+  width: 70%;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#izquierda2 {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 40px;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#izquierda2 img {
+  border-radius: 40px;
+  width: 200px;
+  
+  margin: 0%;
+}
+
+#derecha2 {
+  background-color: #e9c991;
+  border-radius: 40px;
+  height: 100%;
+  width: 50%;
+  margin: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#derecha2 h3{
+  font-family: "Cabin Condensed", sans-serif;
+  color: white;
+}
+
+#derecha2 p{
+  color: whitesmoke;
+}
+
+#footer {
+  width: 100%;
+  height: 300px;
+  background-color: #001122;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fila01 {
+	margin: auto;
+	width: 100%;
+	background-color: #e0dc68;
+	
+   border-radius: 20px 20px 0px 0px;
+	
+	background-size: cover;
+	
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	flex-direction: column;
+
+}
+
+.contenedor7 {
+	width: 60%;
+	margin: 5px;
+	background-color: aliceblue;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 20px;
+
+}
+
+.contenedor-imagen img {
+  width: 100%;display: block; border-radius: 20px;
+}
+
+.contenedor-texto{
+
+	padding: 10px;
+}
+
+
+.contenedor-texto h3 {
+margin: 0;
+	font-size: 22px;
+}
+
+.contenedor-texto p {
+
+	font-size: 15px;
+}
+
+button {
+	
+	margin-bottom: 10px;
+	background-color: #e0dc68; /* Define el color de fondo del botón */
+	/* background-color: #ab8f71; */
+	border: none; /* Elimina los bordes del botón */
+	color: #FDFCF8; /* Establece el color del texto del botón */
+	padding: 10px 25px; /* Establece el espacio interno del botón */
+	text-align: center; /* Alinea el texto del botón al centro */
+	text-decoration: none; /* Elimina la decoración de texto del botón */
+	font-size: 12px; /* Establece el tamaño de la fuente del botón */
+	
+	cursor: pointer; /* Cambia el cursor a una mano cuando se pasa por encima del botón */
+	font-family: 'PT Sans Caption', sans-serif;
+	font-weight: 700;
+	font-style: bold;
+	border-radius: 10px;
+}
+
+.fila02 {
+	margin: auto;
+	width: 100%;
+	background-color: #e0dc68;
+	
+   
+	
+	background-size: cover;
+	
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	flex-direction: column;
+
+}
+
+.contenedor8 {
+	width: 60%;
+	margin: 5px;
+	background-color: aliceblue;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  border-radius: 20px;
+	
+
+}
+
+.contenedor-texto{
+
+	padding: 10px;
+}
+
+
+.contenedor-texto h3 {
+margin: 0;
+	font-size: 22px;
+}
+
+.contenedor-texto p {
+
+	font-size: 15px;
+}
+
+button {
+	
+	margin-bottom: 10px;
+	background-color: #e0dc68; /* Define el color de fondo del botón */
+	/* background-color: #ab8f71; */
+	border: none; /* Elimina los bordes del botón */
+	color: #FDFCF8; /* Establece el color del texto del botón */
+	padding: 10px 25px; /* Establece el espacio interno del botón */
+	text-align: center; /* Alinea el texto del botón al centro */
+	text-decoration: none; /* Elimina la decoración de texto del botón */
+	font-size: 12px; /* Establece el tamaño de la fuente del botón */
+	
+	cursor: pointer; /* Cambia el cursor a una mano cuando se pasa por encima del botón */
+	font-family: 'PT Sans Caption', sans-serif;
+	font-weight: 700;
+	font-style: bold;
+	border-radius: 10px;
+}
+
+.fila03 {
+	margin: auto;
+	width: 100%;
+	background-color: #e0dc68;
+	
+   
+	
+	background-size: cover;
+	
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	flex-direction: column;
+
+}
+
+.contenedor9 {
+	width: 60%;
+	margin: 5px;
+	background-color: aliceblue;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 20px;
+
+}
+
+.contenedor-imagen img {width: 100%;display: block;}
+
+.contenedor-texto{
+
+	padding: 10px;
+}
+
+
+.contenedor-texto h3 {
+margin: 0;
+	font-size: 22px;
+}
+
+.contenedor-texto p {
+
+	font-size: 15px;
+}
+
+button {
+	
+	margin-bottom: 10px;
+	background-color: #e0dc68; /* Define el color de fondo del botón */
+	/* background-color: #ab8f71; */
+	border: none; /* Elimina los bordes del botón */
+	color: #FDFCF8; /* Establece el color del texto del botón */
+	padding: 10px 25px; /* Establece el espacio interno del botón */
+	text-align: center; /* Alinea el texto del botón al centro */
+	text-decoration: none; /* Elimina la decoración de texto del botón */
+	font-size: 12px; /* Establece el tamaño de la fuente del botón */
+	
+	cursor: pointer; /* Cambia el cursor a una mano cuando se pasa por encima del botón */
+	font-family: 'PT Sans Caption', sans-serif;
+	font-weight: 700;
+	font-style: bold;
+	border-radius: 10px;
+}
+
+#footer h2{
+  font-family: "Cabin Condensed", sans-serif;
+  color: #F27405;
+}
+
+#footer li{
+  font-family: "Sniglet", system-ui;
+  color: white;
+}
+
+#contenedor-f {
+  width: 80%;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+
+
+
+
+
+
+
+#volver {
+
+  width: 50px;
+  height: 50px;
+  background-color: rgba(238, 130, 238, 0.212);
+  position: fixed;
+  right: 0%;
+  top: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+#whatsapp {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(238, 130, 238, 0);
+  position: fixed;
+  right: 7%;
+  top: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#whatsapp img{
+  width: 90px;
+  height: 90px;
+}
+
+
+/*///////////*****/
+
+
+@media (max-width: 600px) {
+  #banner0 {
+    width: 100%;
+    height: 100vh;
+    background-color: #F27405;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+
+#texto {
+  width: 90%;
+}
+
+#texto2 {
+  width: 90%;
+}
+
+
+
+#contenedor0 {
+  flex-direction: column;
+}
+
+#contenedor1 {
+  flex-direction:column-reverse;
+}
+
+#izquierda {
+  width: auto;
+}
+
+#izquierda h3{
+   text-align: center;
+}
+
+#izquierda p{
+   text-align: center;
+}
+
+#derecha2 {
+  width: auto;
+}
+
+#derecha2 h3{
+  text-align: center;
+}
+
+#derecha2 p{
+  text-align: center;
+}
+
+
+
+#contenedor2 {
+  flex-direction: column;
+}
+
+.contenedor-imagen img{
+  display: none;
+}
+
+
+
+
+#footer {
+  height: 700px;
+}
+
+#contenedor-f {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
+#whatsapp {
+  right: 20%;
+}
+
+}/*///////////*****/
+
+
+

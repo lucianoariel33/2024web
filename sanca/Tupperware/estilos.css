@@ -1,0 +1,553 @@
+#banner0{
+    width: 100%;
+    height: 100px;
+    background-color:teal;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    color:azure;
+
+    font-family: "Archivo Narrow", sans-serif;
+}
+
+#banner0 img {
+    width: 130px;
+
+
+}
+
+/*******************************************/
+
+#banner{
+    width: 100%;
+    height: 100vh;
+    background-image: url(fondohd.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#texto h1{
+
+background-color:azure;
+
+padding: 20px;
+font-size: 66px;
+
+border-radius: 10px;
+text-transform: uppercase;
+
+font-family: "Archivo Black", sans-serif;
+
+}
+
+#texto p{
+
+text-align: center;
+font-size: 18px;
+
+
+
+
+}
+
+/**************banner2*************************/
+
+#banner2{
+    width: 100%;
+    height: 100%;
+    background-image: url(frutas\ verdes.jpg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#contenedor2{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16%;
+}
+
+
+
+
+
+/****************banner3********************************/
+
+#banner3{
+    width: 100%;
+    height: 100vh;
+   background-color:darkcyan;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: auto;
+}
+
+#contenedor{
+
+    width: 70%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#izquierda{
+    width: 50%;
+    height: 100%; 
+    background-color: rgb(162, 207, 36);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-image: url(/consejo01.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+}
+
+#izquierda img {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#izquierda h3 {
+    margin: 40px;
+}
+
+#derecha{
+    width: 50%;
+    height: 100%; 
+    background-color: rgb(162, 207, 36);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-image: url(/consejo02.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+#derecha img {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/**********************banner4*************************************/
+
+#banner4{
+    width: 100%;
+    height: 100vh;
+    background-color: lightblue;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: auto;
+}
+
+
+#contenedor4{
+
+    width: 70%;
+    height: 80vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+    
+#izquierda4{
+    width: 80%;
+    height: 100%;
+    background-color:ghostwhite;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+    padding: 50px;
+}
+
+#izquierda4 img {
+    width: 80%;
+    
+}
+
+#izquierda4 h3 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+#izquierda4 p {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: small;
+    font-style: normal;
+    text-align: justify;
+    
+
+   
+}
+#derecha4{
+    width: 50%;
+    height: 100%; 
+    background-color:darkcyan;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    flex-direction: column;
+    padding: 50px;
+
+}
+
+#derecha4 img {
+    width: 80%;
+}
+
+#derecha4 h3 {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+
+}
+
+#derecha4 p {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: small;
+    font-style: normal;
+    text-align: justify;
+    font-weight:bold;
+
+}
+
+/*********************banner5***********************************/
+
+#banner5{
+    width: 100%;
+    height: 100vh;
+    background-color:lightblue;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: auto;
+    border-top: 50px solid white;
+
+}
+
+#contenedor5{
+
+
+    width: 70%;
+    height: 60VH;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+    
+#izquierda5{
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+    padding: 50px;
+}
+
+#izquierda5 img {
+    width: 80%;
+    
+}
+
+#izquierda5 h3 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+#izquierda5 p {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: small;
+    font-style: normal;
+    text-align: justify; 
+    font-weight:bold;
+   
+}
+#derecha5{
+    width: 50%;
+    height: 100%; 
+    background-color:cadetblue;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    flex-direction: column;
+    padding: 50px;
+    font-weight:bold;
+   
+}
+
+#derecha5 img {
+    width: 80%;
+}
+
+#derecha5 h3 {
+    font-family:inherit;
+    font-size: x-large;
+    font-weight: bold;
+
+}
+
+#derecha5 p {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: small;
+    font-style: normal;
+    text-align: justify;
+    
+}
+
+/********************banner6*************************************/
+
+#contenedor6 {
+    margin: auto; /* Centra el contenido principal horizontalmente */
+    width: 100%; /* Establece el ancho del contenido principal */
+  }
+  /********************SUSCRIBITE****************/
+  .SUSCRIBITE {
+    height: 100vh; /* Establece la altura de la fila5 */
+    background-size: 100%;
+    background-image:-moz-repeating-radial-gradient(); 
+    display:flex ;
+    justify-content:center;
+    align-items: center;
+flex-direction: column;
+
+  }
+  .titulo {
+    display: flex; /* Convierte la fila3 en un contenedor flexible */
+    background-color:lightblue;
+    justify-content: center; /* Alinea el contenido  al centro horizontalmente */
+    align-items: center; /* Alinea el contenido al centro verticalmente */
+    height: 200px; /* Establece la altura */
+    width: auto; /* Establece el ancho del contenido principal */
+    margin: auto;
+    padding: 60px; /* Establece el espacio interno*/
+    font-size: 40px; /* Establece el tamaño de la fuente del botón */
+    color: white;
+    font-weight: bold;
+    display: flex; /* Convierte la fila3 en un contenedor flexible */
+  }
+
+
+  .contacto {
+    display:flex ;
+ justify-content:center;
+ align-items: center;
+
+
+
+
+
+
+
+  }
+  .contacto .formulario {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    align-content: stretch
+  }
+  .contacto .formulario input[type="email"], .contacto .formulario input[type="TEXT"] {
+    border: 3px solid grey;
+    border-radius: 100px;
+    padding: 15px 20px;
+    font-size: 20px;
+  }
+  .contacto .formulario input[type="text"], .contacto .formulario input[type="email"] {
+    width: 100%;
+    margin: auto;
+    margin-bottom: 15px;
+  }
+  .contacto .formulario .boton {
+    margin: auto;
+    background-color:darkcyan;
+    color: white;
+    margin-bottom: 300px;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 15px 70px;
+    border-radius: 5px;
+  }
+  .contacto .formulario .boton:hover {
+    background:darkslategrey;
+    font-size: 10px;
+    font-weight: bold;
+    color: #020202;
+  }
+
+/********************footer**************************************/
+
+#footer{
+    width: 100%;
+    height: 150px;
+    background-color:cadetblue;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+
+    font-family: "Archivo Narrow", sans-serif;
+font-weight: bold;
+
+
+
+}
+
+
+
+
+@media(max-width:500px){
+
+
+#banner0{
+
+    flex-direction: column;
+    height: 100vh;
+}
+
+#contenedor4{
+
+flex-direction: column;
+width: 100%;
+
+
+}
+
+
+#izquierda4{
+
+flex-direction: column;
+width:100% ;
+
+
+}
+
+
+
+
+
+#derecha4{
+
+flex-direction: column;
+width: 100%;
+
+}
+
+#derecha5{
+
+flex-direction: column;
+width: 100%;
+
+}
+
+
+#izquierda5{
+
+
+flex-direction: column;
+width: 100%;
+
+
+}
+
+#contenedor5{
+flex-direction: column;
+width: 100%;
+height: 100%;
+}
+
+
+
+#contenedor{
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+
+}
+
+#izquierda{ 
+width: 100%;  
+height: 100%;
+}
+
+
+#derecha{
+
+width: 100%;
+
+
+}
+
+
+
+#footer{
+
+    flex-direction: column;
+height: 400px;
+
+}
+#banner2{
+
+    background-size: cover;
+
+
+}
+#texto h1{
+font-size: 33px;
+    
+
+
+
+}
+
+
+
+}

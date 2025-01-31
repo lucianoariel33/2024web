@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Índice de Ejemplos de Clase</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 700px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #2d3436;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        /* Estilos para la lista */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: background-color 0.3s;
+            position: relative; /* Agregado para posicionar el toggle */
+        }
+        /* Alternancia de colores en las tarjetas */
+        li:nth-child(odd) {
+            background-color: #74b9ff;
+        }
+        li:nth-child(even) {
+            background-color: #a29bfe;
+        }
+        li:hover {
+            background-color: #0984e3;
+        }
+        /* Estilos para los enlaces */
+        a {
+            display: block;
+            padding: 15px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        /* Estilos para las descripciones */
+        .description {
+            font-size: 0.9em;
+            color: #dfe6e9;
+            margin-top: 5px;
+            font-weight: normal;
+        }
+        /* Estilos para el toggle */
+        .toggle {
+            display: none;
+            padding: 10px;
+            background-color: #dfe6e9;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .toggle-button {
+            cursor: pointer;
+            background-color: #2d3436;
+            color: #ffffff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+    </style>
+    <script>
+        function togglePrompt(index) {
+            const toggleElement = document.getElementById(`toggle-${index}`);
+            toggleElement.style.display = toggleElement.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Clase 14</h1>
+    <h2>Índice de Ejemplos de Clase</h2>
+    <ul>
+        <li>
+            <a href="01.html">
+                1. Agregar botones de interacción en cada tarjeta
+                <p class="description">Incluir botones que permitan acciones como "Me gusta", "Compartir" o "Guardar". Los botones pueden cambiar de estilo o mostrar mensajes al hacer clic, usando JavaScript para modificar el DOM.</p>
+            </a>
+            <button class="toggle-button" onclick="togglePrompt(1)">Ver prompt para ChatGPT</button>
+            <div class="toggle" id="toggle-1">
+                <p>Prompt: Crea un ejemplo de tarjetas que incluyan botones de interacción como "Me gusta", "Compartir" y "Guardar".</p>
+            </div>
+        </li>
+        <li>
+            <a href="02.html">
+                2. Ordenar y filtrar las tarjetas
+                <p class="description">Implementar funciones para ordenar tarjetas por propiedades (por ejemplo, precio o fecha) y filtrar por categorías, utilizando un menú de opciones de ordenación o filtrado.</p>
+            </a>
+            <button class="toggle-button" onclick="togglePrompt(2)">Ver prompt para ChatGPT</button>
+            <div class="toggle" id="toggle-2">
+                <p>Prompt: Implementa un sistema para ordenar y filtrar tarjetas por diferentes propiedades usando JavaScript.</p>
+            </div>
+        </li>
+        <li>
+            <a href="03.html">
+                3. Incorporar efectos de animación o estilo en las tarjetas
+                <p class="description">Agregar efectos de hover, sombras o transiciones CSS para hacer que las tarjetas se vean más atractivas visualmente.</p>
+            </a>
+            <button class="toggle-button" onclick="togglePrompt(3)">Ver prompt para ChatGPT</button>
+            <div class="toggle" id="toggle-3">
+                <p>Prompt: Añade efectos de animación y estilo a las tarjetas para mejorar su presentación visual.</p>
+            </div>
+        </li>
+        <li>
+            <a href="04.html">
+                4. Mostrar detalles adicionales al hacer clic
+                <p class="description">Implementar un botón "Ver más" que muestre información adicional en la misma tarjeta o en un modal, para aprender a gestionar la visibilidad de contenido.</p>
+            </a>
+            <button class="toggle-button" onclick="togglePrompt(4)">Ver prompt para ChatGPT</button>
+            <div class="toggle" id="toggle-4">
+                <p>Prompt: Crea un botón "Ver más" en las tarjetas que muestre detalles adicionales al hacer clic.</p>
+            </div>
+        </li>
+        <li>
+            <a href="05.html">
+                5. Crear un contador o calificación dinámica en las tarjetas
+                <p class="description">Si el JSON tiene calificaciones, mostrar estrellas o íconos en función de la calificación, o agregar un contador de "Me gusta" que se incremente al hacer clic.</p>
+            </a>
+            <button class="toggle-button" onclick="togglePrompt(5)">Ver prompt para ChatGPT</button>
+            <div class="toggle" id="toggle-5">
+                <p>Prompt: Desarrolla un contador de "Me gusta" que se incremente al hacer clic y muestra calificaciones con estrellas.</p>
+            </div>
+        </li>
+        <li>
+            <a href="06.html">
+                6. Implementar paginación para el listado de tarjetas
+                <p class="description">Para muchos elementos en JSON, implementar paginación que divida las tarjetas en varias páginas o secciones, mostrando solo una cantidad específica a la vez.</p>
+            </a>
+            <button class="toggle-button" onclick="togglePrompt(6)">Ver prompt para ChatGPT</button>
+            <div class="toggle" id="toggle-6">
+                <p>Prompt: Crea una funcionalidad de paginación para mostrar un número específico de tarjetas a la vez.</p>
+            </div>
+        </li>
+        <li>
+            <a href="07.html">
+                7. Aplicar estilos condicionales basados en propiedades JSON
+                <p class="description">Cambiar el color, tamaño o estilo de las tarjetas en función de una propiedad del JSON, como destacar productos "nuevos" o "en oferta".</p>
+            </a>
+            <button class="toggle-button" onclick="togglePrompt(7)">Ver prompt para ChatGPT</button>
+            <div class="toggle" id="toggle-7">
+                <p>Prompt: Aplica estilos condicionales a las tarjetas basados en propiedades específicas del JSON.</p>
+            </div>
+        </li>
+        <li>
+            <a href="08.html">
+                8. Incorporar una función de búsqueda en tiempo real
+                <p class="description">Agregar un cuadro de búsqueda para filtrar las tarjetas según el texto ingresado, usando eventos de entrada y manipulación de arrays en JavaScript.</p>
+            </a>
+            <button class="toggle-button" onclick="togglePrompt(8)">Ver prompt para ChatGPT</button>
+            <div class="toggle" id="toggle-8">
+                <p>Prompt: Implementa un cuadro de búsqueda que filtre las tarjetas en tiempo real según el texto ingresado.</p>
+            </div>
+        </li>
+        <li>
+            <a href="09.html">
+                9. Crear grupos o secciones según categorías
+                <p class="description">Si los datos JSON incluyen categorías, agrupar automáticamente las tarjetas en secciones, mostrando un título para cada grupo.</p>
+            </a>
+            <button class="toggle-button" onclick="togglePrompt(9)">Ver prompt para ChatGPT</button>
+            <div class="toggle" id="toggle-9">
+                <p>Prompt: Agrupa las tarjetas en secciones basadas en categorías definidas en el JSON.</p>
+            </div>
+        </li>
+        <li>
+            <a href="10.html">
+                10. Generar una vista en lista o cuadrícula alternable
+                <p class="description">Crear un botón para alternar entre una vista de cuadrícula y una vista de lista, mostrando cómo alterar la presentación de los datos mediante CSS y JavaScript.</p>
+            </a>
+            <button class="toggle-button" onclick="togglePrompt(10)">Ver prompt para ChatGPT</button>
+            <div class="toggle" id="toggle-10">
+                <p>Prompt: Desarrolla una funcionalidad que permita alternar entre vista de lista y vista de cuadrícula para las tarjetas.</p>
+            </div>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista Alternable de Tarjetas</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        /* Contenedor de tarjetas en cuadrícula */
+        .grid-view {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px; /* Limitar el ancho máximo */
+        }
+        /* Contenedor de tarjetas en lista */
+        .list-view {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px; /* Limitar el ancho máximo */
+        }
+
+     
+        /* Estilos de las tarjetas */
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex; /* Para alinear imagen y texto en la vista de lista */
+            flex-direction: column; /* En cuadrícula, por defecto en columna */
+            align-items: center;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            width: 100%; /* Ajustar tamaño de la imagen */
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px; /* Espacio entre la imagen y el texto en vista de cuadrícula */
+        }
+        .card h3 {
+            color: #2980b9;
+            margin: 0; /* Sin margen para alinear mejor en vista de lista */
+        }
+        .card p {
+            color: #555;
+            margin-top: 5px; /* Margen para la descripción */
+        }
+        /* Estilo específico para vista de lista */
+        .list-view h3 {
+            display:block;
+            color: green;}
+        
+         .list-view .card p {
+            display:block;
+            color: green;
+        margin: 10px;}
+    
+
+        .list-view .card {
+            flex-direction: row; /* En lista, se alinean en fila */
+            align-items: center; /* Centrar verticalmente */
+            margin-bottom: 15px;
+            width: 30%;
+        }
+        .list-view .card img {
+            margin-bottom: 0; /* Sin margen en la parte inferior en vista de lista */
+            margin-right: 20px; /* Espacio entre la imagen y el texto */
+            width: 150px;
+        }
+        /* Botón de vista */
+        .toggle-button {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Vista Alternable de Tarjetas</h1>
+    <button class="toggle-button" id="toggleView">Cambiar a Vista de Lista</button>
+
+    <!-- Contenedor para las tarjetas -->
+    <div id="cardContainer" class="grid-view"></div>
+
+    <script>
+        // Simulación de datos JSON
+        const jsonData = [
+            { "titulo": "Producto 1", "imagen": "https://dummyimage.com/200x300/000/fff&text=Producto+1", "descripcion": "Descripción del Producto 1" },
+            { "titulo": "Producto 2", "imagen": "https://dummyimage.com/200x300/000/fff&text=Producto+2", "descripcion": "Descripción del Producto 2" },
+            { "titulo": "Producto 3", "imagen": "https://dummyimage.com/200x300/000/fff&text=Producto+3", "descripcion": "Descripción del Producto 3" },
+            { "titulo": "Producto 4", "imagen": "https://dummyimage.com/200x300/000/fff&text=Producto+4", "descripcion": "Descripción del Producto 4" },
+            { "titulo": "Producto 5", "imagen": "https://dummyimage.com/200x300/000/fff&text=Producto+5", "descripcion": "Descripción del Producto 5" },
+            { "titulo": "Producto 6", "imagen": "https://dummyimage.com/200x300/000/fff&text=Producto+6", "descripcion": "Descripción del Producto 6" }
+        ];
+
+        // Función para renderizar tarjetas
+        function renderCards(data) {
+            const container = document.getElementById('cardContainer');
+            container.innerHTML = ""; // Limpiar el contenedor
+
+            data.forEach(item => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+
+    const img = document.createElement('img');
+    img.src = item.imagen;
+    img.alt = item.titulo;
+    card.appendChild(img);
+
+    const textInfo = document.createElement('div');
+    textInfo.classList.add('textInfo');
+
+    const title = document.createElement('h3');
+    title.textContent = item.titulo;
+    textInfo.appendChild(title);
+
+    const description = document.createElement('p');
+    description.textContent = item.descripcion;
+    textInfo.appendChild(description);
+
+    card.appendChild(textInfo);
+    container.appendChild(card);
+});
+
+        }
+
+        // Alternar entre vista de cuadrícula y lista
+        let isListView = false;
+        document.getElementById('toggleView').addEventListener('click', () => {
+            isListView = !isListView;
+            const container = document.getElementById('cardContainer');
+            if (isListView) {
+                container.classList.remove('grid-view');
+                container.classList.add('list-view');
+                document.getElementById('toggleView').textContent = 'Cambiar a Vista de Cuadrícula';
+            } else {
+                container.classList.remove('list-view');
+                container.classList.add('grid-view');
+                document.getElementById('toggleView').textContent = 'Cambiar a Vista de Lista';
+            }
+            renderCards(jsonData); // Volver a renderizar las tarjetas al cambiar la vista
+        });
+
+        // Renderizar tarjetas inicialmente
+        renderCards(jsonData);
+    </script>
+
+</body>
+</html>

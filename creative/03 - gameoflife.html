@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de la Vida - 100x100 con Funcionalidades Extra</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #001400;
+            color: #00FF00;
+        }
+        .container {
+            text-align: center;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(100, 8px);
+            grid-template-rows: repeat(100, 8px);
+            margin: 20px auto;
+            border: 2px solid #00FF00;
+        }
+        .cell {
+            width: 8px;
+            height: 8px;
+            /*border: 1px solid #00FF00;*/
+            box-sizing: border-box;
+        }
+        .cell.alive {
+            background-color: #00FF00;
+        }
+        .button-container {
+            margin: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #004400;
+            color: #00FF00;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .button:hover {
+            background-color: #006600;
+        }
+        .status {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Juego de la Vida</h1>
+        <div class="status">
+            <p id="gameStatus">Estado: Detenido</p>
+            <p id="aliveCells">Celdas vivas: 0</p>
+            <p id="cycleCount">Ciclos: 0</p>
+        </div>
+        <div id="grid" class="grid-container"></div>
+        <div class="button-container">
+            <button class="button" onclick="startGame()">Iniciar Juego</button>
+            <button class="button" onclick="stopGame()">Detener Juego</button>
+            <button class="button" onclick="clearGrid()">Borrar Todo</button>
+            <button class="button" onclick="randomizeGrid()">Agregar Celdas Aleatorias</button>
+        </div>
+    </div>
+
+    <script>
+        const gridSize = 100;
+        let intervalId = null;
+        let cycleCount = 0;
+        let isDragging = false;
+
+        function createGrid() {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = '';
+            for (let i = 0; i < gridSize * gridSize; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.addEventListener('mousedown', (e) => {
+                    if (e.button === 0) { // Click izquierdo
+                        isDragging = true;
+                        cell.classList.add('alive');
+                        cell.classList.add('alive');
+                    }
+                    if (e.button === 2) { // Click derecho
+                        isDragging = true;
+                        cell.classList.add('alive');
+                    }
+                    updateAliveCells();
+                });
+                cell.addEventListener('mouseenter', (e) => {
+                    if (isDragging) {
+                        cell.classList.add('alive');
+                        updateAliveCells();
+                    }
+                });
+                grid.appendChild(cell);
+            }
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            // Evitar que el menú contextual aparezca en el click derecho
+            document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+            updateAliveCells();
+        }
+
+        function getGridState() {
+            const cells = document.querySelectorAll('.cell');
+            return Array.from(cells).map(cell => cell.classList.contains('alive'));
+        }
+
+        function setGridState(state) {
+            const cells = document.querySelectorAll('.cell');
+            state.forEach((alive, index) => {
+                if (alive) cells[index].classList.add('alive');
+                else cells[index].classList.remove('alive');
+            });
+            updateAliveCells();
+        }
+
+        function updateGrid() {
+            const state = getGridState();
+            const newState = Array(gridSize * gridSize).fill(false);
+            for (let i = 0; i < gridSize * gridSize; i++) {
+                const neighbors = getNeighbors(i);
+                const aliveNeighbors = neighbors.filter(n => state[n]).length;
+                const isAlive = state[i];
+                newState[i] = isAlive ? (aliveNeighbors === 2 || aliveNeighbors === 3) : (aliveNeighbors === 3);
+            }
+            setGridState(newState);
+            cycleCount++;
+            updateCycleCount();
+        }
+
+        function getNeighbors(index) {
+            const neighbors = [];
+            const row = Math.floor(index / gridSize);
+            const col = index % gridSize;
+            for (let r = row - 1; r <= row + 1; r++) {
+                for (let c = col - 1; c <= col + 1; c++) {
+                    if (r >= 0 && r < gridSize && c >= 0 && c < gridSize && (r !== row || c !== col)) {
+                        neighbors.push(r * gridSize + c);
+                    }
+                }
+            }
+            return neighbors;
+        }
+
+        function startGame() {
+            if (intervalId === null) {
+                intervalId = setInterval(updateGrid, 50); // Velocidad rápida
+                document.getElementById('gameStatus').innerText = "Estado: En Ejecución";
+            }
+        }
+
+        function stopGame() {
+            if (intervalId !== null) {
+                clearInterval(intervalId);
+                intervalId = null;
+                document.getElementById('gameStatus').innerText = "Estado: Detenido";
+            }
+        }
+
+        function clearGrid() {
+            const cells = document.querySelectorAll('.cell');
+            cells.forEach(cell => cell.classList.remove('alive'));
+            stopGame();
+            cycleCount = 0;
+            updateCycleCount();
+            updateAliveCells();
+        }
+
+        function randomizeGrid() {
+            const cells = document.querySelectorAll('.cell');
+            let aliveCount = 0;
+            const maxAlive = Math.floor((gridSize * gridSize) * 0.3); // 30% de celdas vivas
+
+            cells.forEach(cell => {
+                cell.classList.remove('alive');
+            });
+
+            while (aliveCount < maxAlive) {
+                const index = Math.floor(Math.random() * cells.length);
+                if (!cells[index].classList.contains('alive')) {
+                    cells[index].classList.add('alive');
+                    aliveCount++;
+                }
+            }
+
+            updateAliveCells();
+        }
+
+        function updateAliveCells() {
+            const aliveCount = document.querySelectorAll('.cell.alive').length;
+            document.getElementById('aliveCells').innerText = "Celdas vivas: " + aliveCount;
+        }
+
+        function updateCycleCount() {
+            document.getElementById('cycleCount').innerText = "Ciclos: " + cycleCount;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createGrid();
+        });
+    </script>
+</body>
+</html>

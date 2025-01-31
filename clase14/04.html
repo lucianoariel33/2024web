@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar detalles adicionales al hacer clic</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ecf0f1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p.description {
+            color: #34495e;
+            font-size: 1em;
+            max-width: 700px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        /* Contenedor de tarjetas */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        /* Estilos de las tarjetas */
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+            transition: opacity 0.3s;
+        }
+        .card:hover img {
+            opacity: 0.8;
+        }
+        .card h3 {
+            color: #2980b9;
+            margin: 15px 0 10px 0;
+            transition: color 0.3s;
+        }
+        .card:hover h3 {
+            color: #1abc9c;
+        }
+        .card p {
+            color: #7f8c8d;
+            font-size: 0.95em;
+            margin: 10px 0;
+            transition: color 0.3s;
+        }
+        .card:hover p {
+            color: #2c3e50;
+        }
+        /* Botones */
+        .btn {
+            padding: 10px 20px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .btn:hover {
+            background-color: #1abc9c;
+            transform: scale(1.05);
+        }
+        /* Estilos del modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mostrar detalles adicionales al hacer clic</h1>
+    <p class="description">Implementar un botón "Ver más" en cada tarjeta, que al hacer clic muestre información adicional dentro de la misma tarjeta o abra un modal (ventana emergente) con los detalles. Esto ayuda a aprender a gestionar la visibilidad de contenido.</p>
+
+    <!-- Contenedor de tarjetas -->
+    <div id="card-container" class="card-container"></div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+        </div>
+    </div>
+
+    <script>
+        // Simulación de datos JSON
+        const jsonData = [
+            {
+                "titulo": "Smartphone",
+                "descripcion": "Último modelo con tecnología avanzada.",
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=Smartphone",
+                "detalles": "Este smartphone cuenta con una cámara de 108MP, 256GB de almacenamiento y batería de larga duración."
+            },
+            {
+                "titulo": "Auriculares",
+                "descripcion": "Sonido de alta calidad y comodidad.",
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=Auriculares",
+                "detalles": "Auriculares con cancelación de ruido y hasta 20 horas de autonomía."
+            },
+            {
+                "titulo": "Reloj Inteligente",
+                "descripcion": "Mantente conectado y monitorea tu salud.",
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=Reloj+Inteligente",
+                "detalles": "Incluye funciones de seguimiento de actividad física, frecuencia cardíaca y notificaciones."
+            },
+            {
+                "titulo": "Laptop",
+                "descripcion": "Potencia y rendimiento para todas tus tareas.",
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=Laptop",
+                "detalles": "Laptop con procesador i7, 16GB de RAM y 512GB SSD."
+            },
+            {
+                "titulo": "Cámara Digital",
+                "descripcion": "Captura momentos con alta resolución.",
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=Cámara+Digital",
+                "detalles": "Cámara DSLR con lentes intercambiables y grabación en 4K."
+            }
+        ];
+
+        // Función para renderizar las tarjetas
+        function renderCards(data) {
+            const container = document.getElementById('card-container');
+            container.innerHTML = ""; // Limpiar el contenedor
+
+            data.forEach(item => {
+                // Crear elementos de la tarjeta
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                const img = document.createElement('img');
+                img.src = item.imagen;
+                img.alt = item.titulo;
+                card.appendChild(img);
+
+                const title = document.createElement('h3');
+                title.textContent = item.titulo;
+                card.appendChild(title);
+
+                const description = document.createElement('p');
+                description.textContent = item.descripcion;
+                card.appendChild(description);
+
+                const button = document.createElement('button');
+                button.classList.add('btn');
+                button.textContent = 'Ver más';
+                button.onclick = () => showModal(item.titulo, item.detalles);
+                card.appendChild(button);
+
+                // Agregar la tarjeta al contenedor
+                container.appendChild(card);
+            });
+        }
+
+        // Función para mostrar el modal
+        function showModal(title, details) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-description').textContent = details;
+            document.getElementById('myModal').style.display = "block";
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+
+        // Eventos para cerrar el modal
+        document.querySelector('.close').onclick = closeModal;
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('myModal')) {
+                closeModal();
+            }
+        }
+
+        // Llamada a la función para renderizar las tarjetas
+        renderCards(jsonData);
+    </script>
+
+</body>
+</html>

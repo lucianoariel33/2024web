@@ -1,0 +1,662 @@
+#banner0{
+    width: 81.1%;
+    height: 80px;
+    background-color: #F27BBD;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+}
+
+.logo {
+    width: 161px;
+}
+.wsp {
+    width: 50px;
+}
+
+
+
+#titulo h2{
+    font-family: "Sacramento", cursive;
+    font-weight: 800;
+    font-size: 60px;
+    color: white;
+
+}
+
+/****************BANNER***************************/
+
+#banner{
+    width: 80%;
+    height: 100vh;
+    background-color: #874CCC;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+#texto{
+    width: 70%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#texto h1 {
+    font-size: 35px;
+    font-weight: bold;
+    font-family: "Libre Bodoni", serif;
+    color: white;
+}
+
+#texto h2{
+    font-size: large;
+    text-align: justify;
+    font-family: "Montserrat";
+    color: white;
+}
+
+/**************** FILA.SLIDER *****************/
+
+#myCarousel {
+    width: 80%;
+    margin: auto;
+    
+}
+
+
+/**************banner2*************************/
+
+#banner2{
+    width: 80%;
+    height: 100vh;
+    background-color: #F27BBD;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+#contenedor2{
+    width: 70%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#texto2 h1{
+    font-family: "Libre Bodoni", serif;
+    font-size: 34px;
+    text-align: center;
+
+}
+
+#texto2 p{
+    font-size: large;
+    text-align: justify;
+    font-family: "Montserrat";
+}
+
+/*********************BANNER 3**********************************/
+#banner3{
+    width: 80%;
+    height: 100vh;
+    background-color: #874CCC ;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: auto;
+}
+
+#contenedor{
+
+    width: 70%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#izquierda{
+    width: 50%;
+    height: 100%;
+    background-color: #F27BBD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+#izquierda img {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#izquierda h3 {
+    margin: 40px;
+    font-family: "Montserrat";
+    font-size: medium;
+}
+
+#derecha{
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#derecha img {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#derecha h3 {
+    margin: 40px;
+    font-family: "Montserrat";
+    font-size: medium;
+}
+
+/**********************banner4*************************************/
+
+#banner4{
+    width: 80%;
+    height: 100vh;
+    background-color: #F27BBD;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: auto;
+}
+
+
+#contenedor4{
+
+    width: 70%;
+    height: 60vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+    
+#izquierda4{
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+    padding: 50px;
+}
+
+#izquierda4 img {
+    width: 80%;
+    
+}
+
+#izquierda4 h3 {
+    font-family: "Montserrat";
+    font-size: medium;
+}
+
+#derecha4{
+    width: 50%;
+    height: 100%; 
+    background-color:#874CCC;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    flex-direction: column;
+    padding: 50px;
+
+}
+
+#derecha4 img {
+    width: 80%;
+}
+
+#derecha4 h3 {
+    font-family: "Montserrat";
+    font-size: medium;
+}
+
+#derecha4 p {
+    font-family: "Montserrat";
+    font-size: medium;
+    font-style: normal;
+    text-align: justify;
+}
+
+/*********************banner5***********************************/
+
+#banner5{
+    width: 80%;
+    height: 100vh;
+    background-color: #874CCC;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: auto;
+}
+
+#contenedor5{
+
+
+    width: 70%;
+    height: 60VH;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+    
+#izquierda5{
+    width: 50%;
+    height: 100%;
+    background-color: #F27BBD;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+    padding: 50px;
+}
+
+#izquierda5 img {
+    width: 80%;
+    
+}
+
+#izquierda5 h3 {
+    font-family: "Montserrat";
+    font-size: medium;
+}
+
+
+#derecha5{
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+    padding: 50px;
+
+}
+
+#derecha5 img {
+    width: 80%;
+}
+
+#derecha5 h3 {
+    font-family: "Montserrat";
+    font-size: medium;
+
+}
+
+
+/********************banner6*************************************/
+
+#contenedor6 {
+    margin: auto; /* Centra el contenido principal horizontalmente */
+    width: 80%; /* Establece el ancho del contenido principal */
+  }
+  /********************SUSCRIBITE****************/
+  .SUSCRIBITE {
+    height: 345px; /* Establece la altura de la fila5 */
+    background-size: 100%;
+    background-color: #F27BBD; 
+  }
+  .titulo {
+    display: flex; /* Convierte la fila3 en un contenedor flexible */
+    background-color: #10439F;
+    justify-content: center; /* Alinea el contenido  al centro horizontalmente */
+    align-items: center; /* Alinea el contenido al centro verticalmente */
+    height: 20px; /* Establece la altura */
+    width: auto; /* Establece el ancho del contenido principal */
+    margin: auto;
+    padding: 20px; /* Establece el espacio interno*/
+    font-size: 25px; /* Establece el tamaño de la fuente del botón */
+    color: white;
+    font-weight: bold;
+    font-family: "Libre Bodoni", serif;
+    display: flex; /* Convierte la fila3 en un contenedor flexible */
+  }
+  .contacto .formulario {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    align-content: stretch;
+    font-family: "Montserrat";
+  }
+  .contacto .formulario input[type="email"], .contacto .formulario input[type="TEXT"] {
+    border: 3px solid grey;
+    border-radius: 5px;
+    padding: 15px 20px;
+    font-size: 20px;
+  }
+  .contacto .formulario input[type="text"], .contacto .formulario input[type="email"] {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 15px;
+  }
+  .contacto .formulario .boton {
+    margin: auto;
+    background-color:  #10439F;
+    color: white;
+    margin-bottom: 50px;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 15px 70px;
+    border-radius: 5px;
+    font-family: "Montserrat"; 
+  }
+  .contacto .formulario .boton:hover {
+    background: #92bcff;
+    font-size: 16px;
+    font-weight: bold;
+    color: #020202;
+  }
+
+/********************footer**************************************/
+
+#footer{
+    width: 81.1%;
+    height: 50px;
+    background-color: #10439F;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    font-family: "Libre Bodoni", serif;
+    color: white;
+}
+
+
+/************ MEDIAQUERIES BANNER 0 ***********************/
+
+@media (max-width: 500px) {
+
+  
+#banner0{
+    height: 350px;
+    flex-direction: column;
+    width: 100%;
+    
+} 
+
+#titulo h2{
+    font-weight: 80;
+    font-size: 70px;
+}
+   
+
+/**************MEDIAQUERIES MY CAROUSEL *****************/
+    
+#myCarousel{
+    width: 100%;
+    height: auto;
+}
+
+
+
+/*************MEDIAQUERIES BANNER *************************/
+
+#banner{
+    width: 80%;
+    height: 80vh;
+    width: 100%;
+
+}
+
+#texto{
+    width: 70%;
+    height: 70vh;
+    flex-direction: column;
+}
+
+#texto h1 {
+    font-size: 20px;
+    font-family: "Libre Bodoni", serif;
+    color: white;
+    text-align: center;
+}
+
+#texto h2{
+    font-size: large;
+    text-align: center;
+    color: white;
+}
+
+/*************MEDIAQUERIES BANNER 2 *****************/   
+#banner2 {
+    width: 100%;
+}
+
+
+
+ /*************MEDIAQUERIES BANNER 3 *****************/   
+ #banner3{
+    
+    height: 50vh;
+    width: 100%;
+
+}
+
+
+#izquierda{
+    width: 50%;
+    height: 50%;    
+}
+
+#izquierda img {
+    width: 100px;
+}
+
+#izquierda h3 {
+    margin: 10px;
+    font-size: 80%;
+    text-align: center;
+    font-weight: bold;
+}
+
+#derecha{
+    width: 50%;
+    height: 50%;
+    flex-direction: column;
+}
+#derecha img {
+    width: 100px;
+}
+
+#derecha h3 {
+    margin: 10px;
+    font-size: 80%;
+    text-align: center;
+    font-weight: bold;
+}
+
+/****************** MEDIAQUERIES BANNER 4 *******************/
+
+#banner4{
+    width: 100%;
+    height: 50vh;
+}
+
+    
+#izquierda4{
+    width: 50%;
+    height: 50%;
+    padding: 10px;
+}
+
+#izquierda4 img {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#izquierda4 h3 {
+    margin: 10px;
+    font-size: 80%;
+    text-align: center;
+    font-weight: bold;
+}
+
+#derecha4{
+    width: 50%;
+    height: 50%; 
+    padding: 10px;
+
+}
+
+#derecha4 img {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#derecha4 h3 {
+    margin: 10px;
+    font-size: 80%;
+    text-align: center;
+    font-weight: bold;
+   
+}
+
+/********************* MEDIAQUERIES BANNER 5 ******************/
+
+
+#banner5{
+    width: 100%;
+    height: 50vh;
+}
+
+
+#izquierda5{
+    width: 50%;
+    height: 50%;
+    padding: 10px;
+}
+
+#izquierda5 img {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#izquierda5 h3 {
+    margin: 10px;
+    font-size: 80%;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+#derecha5{
+    width: 50%;
+    height: 50%;
+    padding: 10px;
+
+}
+
+#derecha5 img {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#derecha5 h3 {
+    margin: 10px;
+    font-size: 80%;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/*************MEDIAQUERIES BANNER 6 ********************/
+
+#contenedor6 {
+    margin: auto; /* Centra el contenido principal horizontalmente */
+    width: 100%; /* Establece el ancho del contenido principal */
+    
+  }
+  /********************SUSCRIBITE****************/
+
+  .SUSCRIBITE {
+    height: 270px; /* Establece la altura de la fila5 */
+  }
+  
+  .titulo {
+    height: 50px; /* Establece la altura */width: 80%;
+    width: auto; /* Establece el ancho del contenido principal */
+    font-size: 15px; /* Establece el tamaño de la fuente del botón */
+    font-weight: normal;
+  }
+ 
+  .contacto .formulario input[type="email"], .contacto .formulario input[type="TEXT"] {
+    padding: 5px 5px;
+    font-size: 10px;
+    font-weight: bold;
+  }
+  .contacto .formulario input[type="text"], .contacto .formulario input[type="email"] {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 15px;
+  }
+
+  
+
+/**********MEDIAQUERIES FOOTER *******************/
+
+#footer{
+    font-size: 80%;
+    width: 100%;
+}
+
+}
+

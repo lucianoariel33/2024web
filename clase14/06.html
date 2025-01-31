@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paginación de Tarjetas de Libros</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p.description {
+            color: #34495e;
+            font-size: 1em;
+            max-width: 700px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        /* Contenedor de tarjetas */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        /* Estilos de las tarjetas */
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .card h3 {
+            color: #2980b9;
+            margin: 15px 0 10px 0;
+        }
+        /* Estilos de la paginación */
+        .pagination {
+            display: flex;
+            gap: 10px;
+        }
+        .page-btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .page-btn:hover {
+            background-color: #1abc9c;
+        }
+        .active {
+            background-color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Paginación de Tarjetas de Libros</h1>
+    <p class="description">Visualiza una lista de libros con paginación. Haz clic en los botones de página para navegar entre los libros.</p>
+
+    <!-- Contenedor de tarjetas -->
+    <div id="card-container" class="card-container"></div>
+
+    <!-- Contenedor de paginación -->
+    <div id="pagination" class="pagination"></div>
+
+    <script>
+        // Simulación de datos JSON
+        const jsonData = [
+            { "titulo": "Cien años de soledad", "imagen": "https://dummyimage.com/200x300/000/fff&text=Cien+años+de+soledad" },
+            { "titulo": "El amor en los tiempos del cólera", "imagen": "https://dummyimage.com/200x300/000/fff&text=El+amor+en+los+tiempos+del+cólera" },
+            { "titulo": "Don Quijote de la Mancha", "imagen": "https://dummyimage.com/200x300/000/fff&text=Don+Quijote+de+la+Mancha" },
+            { "titulo": "1984", "imagen": "https://dummyimage.com/200x300/000/fff&text=1984" },
+            { "titulo": "Moby Dick", "imagen": "https://dummyimage.com/200x300/000/fff&text=Moby+Dick" },
+            { "titulo": "Crónica de una muerte anunciada", "imagen": "https://dummyimage.com/200x300/000/fff&text=Crónica+de+una+muerte+anunciada" },
+            { "titulo": "El túnel", "imagen": "https://dummyimage.com/200x300/000/fff&text=El+túnel" },
+            { "titulo": "El retrato de Dorian Gray", "imagen": "https://dummyimage.com/200x300/000/fff&text=El+retrato+de+Dorian+Gray" },
+            { "titulo": "Rayuela", "imagen": "https://dummyimage.com/200x300/000/fff&text=Rayuela" },
+            { "titulo": "La sombra del viento", "imagen": "https://dummyimage.com/200x300/000/fff&text=La+sombra+del+viento" },
+            { "titulo": "Cien años de soledad", "imagen": "https://dummyimage.com/200x300/000/fff&text=Cien+años+de+soledad" },
+            { "titulo": "El amor en los tiempos del cólera", "imagen": "https://dummyimage.com/200x300/000/fff&text=El+amor+en+los+tiempos+del+cólera" },
+            { "titulo": "Don Quijote de la Mancha", "imagen": "https://dummyimage.com/200x300/000/fff&text=Don+Quijote+de+la+Mancha" },
+            { "titulo": "1984", "imagen": "https://dummyimage.com/200x300/000/fff&text=1984" },
+            { "titulo": "Moby Dick", "imagen": "https://dummyimage.com/200x300/000/fff&text=Moby+Dick" },
+            { "titulo": "Crónica de una muerte anunciada", "imagen": "https://dummyimage.com/200x300/000/fff&text=Crónica+de+una+muerte+anunciada" },
+            { "titulo": "El túnel", "imagen": "https://dummyimage.com/200x300/000/fff&text=El+túnel" },
+            { "titulo": "El retrato de Dorian Gray", "imagen": "https://dummyimage.com/200x300/000/fff&text=El+retrato+de+Dorian+Gray" },
+            { "titulo": "Rayuela", "imagen": "https://dummyimage.com/200x300/000/fff&text=Rayuela" },
+            { "titulo": "La sombra del viento", "imagen": "https://dummyimage.com/200x300/000/fff&text=La+sombra+del+viento" }
+        ];
+
+        const itemsPerPage = 5; // Número de tarjetas por página
+        let currentPage = 1;
+
+        // Función para renderizar las tarjetas
+        function renderCards(data, page) {
+            const container = document.getElementById('card-container');
+            container.innerHTML = ""; // Limpiar el contenedor
+
+            // Calcular índices de inicio y fin
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedData = data.slice(start, end);
+
+            paginatedData.forEach(item => {
+                // Crear elementos de la tarjeta
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                const img = document.createElement('img');
+                img.src = item.imagen;
+                img.alt = item.titulo;
+                card.appendChild(img);
+
+                const title = document.createElement('h3');
+                title.textContent = item.titulo;
+                card.appendChild(title);
+
+                // Agregar la tarjeta al contenedor
+                container.appendChild(card);
+            });
+
+            renderPagination(data.length, page);
+        }
+
+        // Función para renderizar la paginación
+        function renderPagination(totalItems, currentPage) {
+            const paginationContainer = document.getElementById('pagination');
+            paginationContainer.innerHTML = ""; // Limpiar el contenedor de paginación
+
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                pageButton.classList.add('page-btn');
+                if (i === currentPage) {
+                    pageButton.classList.add('active');
+                }
+                pageButton.onclick = () => {
+                    currentPage = i;
+                    renderCards(jsonData, currentPage);
+                };
+                paginationContainer.appendChild(pageButton);
+            }
+        }
+
+        // Llamada a la función para renderizar las tarjetas inicialmente
+        renderCards(jsonData, currentPage);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Me gusta y Calificación Dinámica</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p.description {
+            color: #34495e;
+            font-size: 1em;
+            max-width: 700px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        /* Contenedor de tarjetas */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        /* Estilos de las tarjetas */
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .card h3 {
+            color: #2980b9;
+            margin: 15px 0 10px 0;
+        }
+        .star {
+            color: gold;
+        }
+        .like-btn {
+            margin-top: 15px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .like-btn:hover {
+            background-color: #1abc9c;
+            transform: scale(1.05);
+        }
+        .like-count {
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #34495e;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Contador de Me gusta y Calificación Dinámica</h1>
+    <p class="description">Cada tarjeta representa una película, mostrando su calificación en estrellas y un contador de "Me gusta". Haz clic en "Me gusta" para incrementar el contador.</p>
+
+    <!-- Contenedor de tarjetas -->
+    <div id="card-container" class="card-container"></div>
+
+    <script>
+        // Simulación de datos JSON
+        const jsonData = [
+            {
+                "titulo": "Inception",
+                "calificacion": 4.5,
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=Inception",
+                "likes": 0
+            },
+            {
+                "titulo": "Interstellar",
+                "calificacion": 5,
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=Interstellar",
+                "likes": 0
+            },
+            {
+                "titulo": "The Dark Knight",
+                "calificacion": 4.8,
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=The+Dark+Knight",
+                "likes": 0
+            },
+            {
+                "titulo": "Parasite",
+                "calificacion": 4.6,
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=Parasite",
+                "likes": 0
+            },
+            {
+                "titulo": "The Matrix",
+                "calificacion": 4.7,
+                "imagen": "https://dummyimage.com/250x150/000/fff&text=The+Matrix",
+                "likes": 0
+            }
+        ];
+
+        // Función para renderizar las tarjetas
+        function renderCards(data) {
+            const container = document.getElementById('card-container');
+            container.innerHTML = ""; // Limpiar el contenedor
+
+            data.forEach(item => {
+                // Crear elementos de la tarjeta
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                const img = document.createElement('img');
+                img.src = item.imagen;
+                img.alt = item.titulo;
+                card.appendChild(img);
+
+                const title = document.createElement('h3');
+                title.textContent = item.titulo;
+                card.appendChild(title);
+
+                // Calificación en estrellas
+                const starContainer = document.createElement('div');
+                for (let i = 1; i <= 5; i++) {
+                    const star = document.createElement('span');
+                    star.classList.add('star');
+                    star.textContent = i <= item.calificacion ? '★' : '☆';
+                    starContainer.appendChild(star);
+                }
+                card.appendChild(starContainer);
+
+                // Botón de Me gusta
+                const likeButton = document.createElement('button');
+                likeButton.classList.add('like-btn');
+                likeButton.textContent = 'Me gusta';
+                likeButton.onclick = () => {
+                    item.likes++;
+                    renderCards(data); // Vuelve a renderizar para actualizar el contador
+                };
+                card.appendChild(likeButton);
+
+                // Contador de likes
+                const likeCount = document.createElement('div');
+                likeCount.classList.add('like-count');
+                likeCount.textContent = `${item.likes} Me gusta`;
+                card.appendChild(likeCount);
+
+                // Agregar la tarjeta al contenedor
+                container.appendChild(card);
+            });
+        }
+
+        // Llamada a la función para renderizar las tarjetas
+        renderCards(jsonData);
+    </script>
+
+</body>
+</html>
